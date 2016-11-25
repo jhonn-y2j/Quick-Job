@@ -25,9 +25,19 @@ public class Oferta {
     private String ramas_carrera;
     private int id_empresa;
 
+    private Empresa empresa;
+
     //adicional
     private String fecha_publicacion;
     private int cantidad_postulantes;
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 
     public int getId_empresa() {
         return id_empresa;

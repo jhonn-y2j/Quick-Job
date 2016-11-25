@@ -10,6 +10,7 @@ import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.modelo.Oferta;
 import com.developers.quickjob.quick_job.modelo.Postulante;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -237,8 +238,70 @@ public class Operacionesbd {
         return estado;
     }
 
-    public List<Oferta> getListOfertasPublicadas(){
-        return null;
+    public List<Oferta> getListOfertasPublicadasEmp(int idempresa){
+
+        List<Oferta> ofertas=null;
+
+        SQLiteDatabase database=db.getWritableDatabase();
+
+        String sql=String.format(" select %s.%s, %s, %s, %s, %s from %s, %s where %s.%s=? and %s.%s=%s.%s",
+                Constantebd.TABLE_OFERTA, Constantebd.TABLE_OFERTA_ID,
+                Constantebd.TABLE_OFERTA_PUESTO,Constantebd.TABLE_OFERTA_UBICACION,Constantebd.TABLE_OFERTA_FECHA_PUBLICACION,
+                Constantebd.TABLE_EMPRESA_NOMB_COMERCIAL, Constantebd.TABLE_EMPRESA, Constantebd.TABLE_OFERTA
+                ,Constantebd.TABLE_OFERTA,Constantebd.TABLE_OFERTA_ID_EMPRESA,
+                Constantebd.TABLE_OFERTA,Constantebd.TABLE_OFERTA_ID_EMPRESA,
+                Constantebd.TABLE_EMPRESA,Constantebd.TABLE_EMPRESA_ID);
+
+        String argumentos[]={String.valueOf(idempresa)};
+
+        Cursor registro= database.rawQuery(sql,argumentos);
+        ofertas= new ArrayList<>();
+        while(registro.moveToNext()){
+            Oferta oferta= new Oferta();
+            oferta.setId(String.valueOf(registro.getInt(0)));
+            oferta.setPuesto(registro.getString(1));
+            oferta.setUbicacion_job(registro.getString(2));
+            oferta.setFecha_publicacion(registro.getString(3));
+            Empresa empresa= new Empresa();
+            empresa.setNombre_comercial(registro.getString(4));
+            oferta.setEmpresa(empresa);
+            ofertas.add(oferta);
+        }
+
+        database.close();
+
+        return ofertas;
+    }
+
+    public List<Oferta> getOfertasEmpleo(){
+        List<Oferta> ofertas=null;
+
+        SQLiteDatabase database=db.getWritableDatabase();
+
+        String sql=String.format(" select %s.%s, %s, %s, %s, %s from %s, %s where %s.%s=%s.%s",
+                Constantebd.TABLE_OFERTA, Constantebd.TABLE_OFERTA_ID,
+                Constantebd.TABLE_OFERTA_PUESTO,Constantebd.TABLE_OFERTA_UBICACION,Constantebd.TABLE_OFERTA_FECHA_PUBLICACION,
+                Constantebd.TABLE_EMPRESA_NOMB_COMERCIAL, Constantebd.TABLE_EMPRESA, Constantebd.TABLE_OFERTA
+                ,Constantebd.TABLE_OFERTA,Constantebd.TABLE_OFERTA_ID_EMPRESA,
+                Constantebd.TABLE_EMPRESA,Constantebd.TABLE_EMPRESA_ID);
+
+        Cursor registro= database.rawQuery(sql,null);
+        ofertas= new ArrayList<>();
+        while(registro.moveToNext()){
+            Oferta oferta= new Oferta();
+            oferta.setId(String.valueOf(registro.getInt(0)));
+            oferta.setPuesto(registro.getString(1));
+            oferta.setUbicacion_job(registro.getString(2));
+            oferta.setFecha_publicacion(registro.getString(3));
+            Empresa empresa= new Empresa();
+            empresa.setNombre_comercial(registro.getString(4));
+            oferta.setEmpresa(empresa);
+            ofertas.add(oferta);
+        }
+
+        database.close();
+
+        return ofertas;
     }
 
     // metodo de prueba

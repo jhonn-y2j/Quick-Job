@@ -90,14 +90,14 @@ public class MainActivityEmp extends AppCompatActivity
 
         if (id==R.id.nav_ofertas_emp){
             fragment= new fragment_oferta();
-            Bundle bundle= new Bundle();
-            bundle.putInt(ID,Integer.parseInt(idemps));
-            fragment.setArguments(bundle);
         }else if (id== R.id.nav_publicaciones_emp){
             fragment = new fragmetn_ofertas_publicadas();
         }
 
         if (fragment!=null){
+            Bundle bundle= new Bundle();
+            bundle.putInt(ID,Integer.parseInt(idemps));
+            fragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
         }
 

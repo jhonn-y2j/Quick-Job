@@ -27,14 +27,14 @@
             <TextView
                 android:textAlignment="center"
                 android:text="Analista Programador Java"
-                android:id="@+id/txt_date_lock"
+                android:id="@+id/txt_puesto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:textAlignment="center"
                 android:text="TecSUP"
-                android:id="@+id/txt_lock_msj"
+                android:id="@+id/txt_empresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -51,7 +51,7 @@
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:text="Vier. Nov. 25"
-                android:id="@+id/txt_title_lock"
+                android:id="@+id/txt_fecha_publ"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
@@ -59,7 +59,7 @@
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:text="Miraflores"
-                android:id="@+id/txt_horario_lock"
+                android:id="@+id/txt_lugar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 

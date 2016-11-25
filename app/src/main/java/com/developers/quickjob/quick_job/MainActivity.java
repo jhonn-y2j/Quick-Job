@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.developers.quickjob.quick_job.fragment.fragment_ofertas_empleo;
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
 
 import butterknife.BindView;
@@ -26,20 +27,23 @@ public class MainActivity extends AppCompatActivity
 
     public static final String ID="id";
     String idusers;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(" ");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(" Ofertas Empleo ");
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
 
-        //idusers=getIntent().getStringExtra(ID);
+        idusers=getIntent().getStringExtra(ID);
 
-        //Log.d(MainActivity.class.getName(),idusers);
+        Log.d(MainActivity.class.getName(),idusers);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new fragment_ofertas_empleo()).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -88,10 +92,14 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment= null;
 
         if (id==R.id.nav_perfil){
+            toolbar.setTitle("Perfil");
             fragment= new fragment_perfil_usrs();
             Bundle bundle= new Bundle();
             bundle.putInt(ID,Integer.parseInt(idusers));
             fragment.setArguments(bundle);
+        }else if (id==R.id.nav_ofertas){
+            toolbar.setTitle("Ofertas Empleo");
+            fragment= new fragment_ofertas_empleo();
         }
 
         if (fragment!=null){

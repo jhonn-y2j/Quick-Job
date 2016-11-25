@@ -57,9 +57,9 @@ public class LoginActivity extends AppCompatActivity {
     public void handleIniciar() {
         String email=correo.getText().toString();
         String pass= password.getText().toString();
-        String id=db.verficaremprs(email,pass);
+        String id=db.verficarusrs(email,pass);
         if (id!=null) {
-            Intent intent= new Intent(getApplicationContext(), MainActivityEmp.class);
+            Intent intent= new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra(MainActivity.ID,id);
             startActivity(intent);
         }else{
