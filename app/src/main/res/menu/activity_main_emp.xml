@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"  >
+        <item
+            android:id="@+id/nav_perfil_emp"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_text_perfil_emp" />
+        <item
+            android:id="@+id/nav_ofertas_emp"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/nav_text_oferta_emp" />
+        <item
+            android:id="@+id/nav_publicaciones_emp"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/nav_text_publicaciones" />
+        <item
+            android:id="@+id/nav_notification_emp"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/nav_text_notificacion_emp" />
+        <item
+            android:id="@+id/nav_close_emp"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/nav_text_salir" />
+    </group>
+
+</menu>

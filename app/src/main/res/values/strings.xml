@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Quick-Job</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <!-- Usuario items menu navegation -->
+    <string name="nav_text_perfil">Ver Perfil</string>
+    <string name="nav_text_oferta">Ofertas de empleo</string>
+    <string name="nav_text_postulaciones">Postulaciones</string>
+    <string name="nav_text_notificacion">Notificaciones</string>
+    <string name="nav_text_salir">Salir</string>
+
+    <!-- Empresa -->
+    <string name="nav_text_perfil_emp">Ver Perfil</string>
+    <string name="nav_text_oferta_emp">Publicar Oferta de empleo</string>
+    <string name="nav_text_publicaciones">Ver Ofertas Publicadas</string>
+    <string name="nav_text_notificacion_emp">Notificaciones</string>
+
+
+    <string name="nav_search">Buscar</string>
+
+    <string name="text_olvidada_password"><u>¿Has olvidado la contraseña?</u></string>
+    <string name="etiq_public_ofert">CREAR OFERTA DE EMPLEO</string>
+    <string name="hint_puesto">Puesto</string>
+    <string name="hint_area">Área</string>
+    <string name="hint_tipojob">Tipo de Trabajo</string>
+    <string name="hint_disponibilidad">Disponibilidad</string>
+    <string name="hint_fechainicio">Fecha de Inicio</string>
+    <string name="hint_sueldo">Sueldo</string>
+    <string name="hint_ubicacion">Ubicación del trabajo</string>
+    <string name="hint_requisitos">Requisitos</string>
+    <string name="hint_funciones">Funciones y Obligaciones</string>
+    <string name="hint_perfil_est">Perfil</string>
+    <string name="hint_ramas">Ramas</string>
+    <string name="hint_publicar">Publicar</string>
+    <string name="hint_sexo">Género</string>
+    <string name="title_publicaciones">OFERTAS DE EMPLEO PUBLICADAS POR SU EMPRESA</string>
+    <string-array name="list_disponb">
+        <item>Full Time</item>
+        <item>Part Time</item>
+    </string-array>
+
+    <string-array name="list_perfil">
+        <item>Estudiante</item>
+        <item>Recién egresado</item>
+    </string-array>
+
+    <string-array name="list_genero">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+
+</resources>
