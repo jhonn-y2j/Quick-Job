@@ -57,9 +57,9 @@ public class OfertaDetalleActivity extends AppCompatActivity {
             Postulaciones postulaciones= new Postulaciones();
             postulaciones.setIdoferta(idoferts);
             postulaciones.setIdpostulante(idusers);
-            postulaciones.setPostular(0);
+            postulaciones.setPostular(1);
             postulaciones.setMsjempresa(0);
-            postulaciones.setNropostulantes(0);
+            postulaciones.setNropostulantes(1);
             if (db.registrarPostulacion(postulaciones)){
                 Toast.makeText(getApplicationContext()," Postulado ",Toast.LENGTH_SHORT).show();
                 db.getPostulaciones();
