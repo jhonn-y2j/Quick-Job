@@ -59,15 +59,16 @@ public final class Constantebd {
     public static final String TABLE_OFERTA_GENERO="genero";
     public static final String TABLE_OFERTA_RAMAS="ramas";
     public static final String TABLE_OFERTA_FECHA_PUBLICACION="fecha_publicacion";
-    public static final String TABLE_OFERTA_NRO_POSTULANTES="nro_postulantes";
+    //public static final String TABLE_OFERTA_NRO_POSTULANTES="nro_postulantes";
     public static final String TABLE_OFERTA_ID_EMPRESA="id_empresa";
 
     // tabla postulaciones
     public static final String TABLE_POSTULACIONES="postulaciones";
     public static final String TABLE_POSTULACIONES_ID_POSTULANTE="id_postulante";
     public static final String TABLE_POSTULACIONES_ID_OFERTA="id_oferta";
-    //boolean
+    //boolean = INTERGER 0 ó 1
     public static final String TABLE_POSTULACIONES_NOTIFUSRS="notifusrs";
     public static final String TABLE_POSTULACIONES_NOTIFEMP="notifemp";
+    public static final String TABLE_POSTULACIONES_NRO_POSTULANTES="nro_postulantes";
 
 }

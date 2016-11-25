@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.developers.quickjob.quick_job.fragment.fragment_ofertas_empleo;
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
+import com.developers.quickjob.quick_job.fragment.fragment_postulaciones;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(MainActivity.class.getName(),idusers);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new fragment_ofertas_empleo()).commit();
+        Fragment fragment=new fragment_ofertas_empleo();
+        Bundle bundle= new Bundle();
+        bundle.putInt(ID,Integer.parseInt(idusers));
+        fragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,6 +106,12 @@ public class MainActivity extends AppCompatActivity
         }else if (id==R.id.nav_ofertas){
             toolbar.setTitle("Ofertas Empleo");
             fragment= new fragment_ofertas_empleo();
+            Bundle bundle= new Bundle();
+            bundle.putInt(ID,Integer.parseInt(idusers));
+            fragment.setArguments(bundle);
+        }else if (id==R.id.nav_postulaciones){
+            toolbar.setTitle(" ");
+            fragment= new fragment_postulaciones();
         }
 
         if (fragment!=null){

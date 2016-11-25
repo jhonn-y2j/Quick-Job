@@ -102,7 +102,6 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         String publicacion=simpleDateFormat.format(System.currentTimeMillis());
         oferta.setFecha_publicacion(publicacion);
         Log.d(fragment_oferta.class.getName(),publicacion);
-        oferta.setCantidad_postulantes(0);
         oferta.setId_empresa(idemps);
 
         if (db.publicarOferta(oferta)){

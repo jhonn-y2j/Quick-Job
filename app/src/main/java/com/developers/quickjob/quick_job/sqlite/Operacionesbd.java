@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.modelo.Oferta;
+import com.developers.quickjob.quick_job.modelo.Postulaciones;
 import com.developers.quickjob.quick_job.modelo.Postulante;
 
 import java.util.ArrayList;
@@ -225,7 +226,6 @@ public class Operacionesbd {
         values.put(Constantebd.TABLE_OFERTA_PERFIL,oferta.getPerfil());
         values.put(Constantebd.TABLE_OFERTA_RAMAS,oferta.getRamas_carrera());
         values.put(Constantebd.TABLE_OFERTA_FECHA_PUBLICACION,oferta.getFecha_publicacion());
-        values.put(Constantebd.TABLE_OFERTA_NRO_POSTULANTES,oferta.getCantidad_postulantes());
         values.put(Constantebd.TABLE_OFERTA_ID_EMPRESA,oferta.getId_empresa());
 
 
@@ -319,6 +319,48 @@ public class Operacionesbd {
 
         sqLiteDatabase.close();
     }
+
+    // postulaciones
+
+    public boolean registrarPostulacion(Postulaciones postulaciones){
+        boolean estado=false;
+
+        SQLiteDatabase database=db.getWritableDatabase();
+
+        ContentValues values= new ContentValues();
+        values.put(Constantebd.TABLE_POSTULACIONES_ID_POSTULANTE,postulaciones.getIdpostulante());
+        values.put(Constantebd.TABLE_POSTULACIONES_ID_OFERTA,postulaciones.getIdoferta());
+        values.put(Constantebd.TABLE_POSTULACIONES_NOTIFUSRS,postulaciones.getPostular());
+        values.put(Constantebd.TABLE_POSTULACIONES_NOTIFEMP,postulaciones.getMsjempresa());
+        values.put(Constantebd.TABLE_POSTULACIONES_NRO_POSTULANTES,postulaciones.getNropostulantes());
+
+        if (database.insertOrThrow(Constantebd.TABLE_POSTULACIONES,null,values)>0){
+            estado=true;
+        }
+
+        database.close();
+
+        return estado;
+
+    }
+
+    // metodo de prueba
+
+    public void getPostulaciones(){
+        SQLiteDatabase sqLiteDatabase= db.getReadableDatabase();
+
+        String sql= " select * from postulaciones ";
+
+        Cursor cursor= sqLiteDatabase.rawQuery(sql,null);
+
+        while(cursor.moveToNext()){
+            Log.d(Operacionesbd.class.getName()," registro -> "+cursor.getInt(1) + cursor.getInt(2));
+        }
+
+        sqLiteDatabase.close();
+    }
+
+
 
 
 }

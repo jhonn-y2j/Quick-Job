@@ -94,7 +94,7 @@ public class RegistersEmpActivity extends AppCompatActivity {
             if (db.registrarEmpresa(empresa)==true){
                 db.obtenerEmpresa();
                 Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + ");
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivityEmp.class));
             }else{
                 Toast.makeText(getApplicationContext(), " Completar campos requeridos ", Toast.LENGTH_SHORT).show();
             }

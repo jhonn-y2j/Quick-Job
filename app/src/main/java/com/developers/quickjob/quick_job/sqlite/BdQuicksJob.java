@@ -13,7 +13,7 @@ import android.provider.BaseColumns;
 
 public class BdQuicksJob extends SQLiteOpenHelper {
 
-    private static final String namedb="quicksjob.db";
+    private static final String namedb="quicksj.db";
     private static final int versiondb=1;
 
     interface referencias{
@@ -44,7 +44,7 @@ public class BdQuicksJob extends SQLiteOpenHelper {
                 Constantebd.TABLE_POSTULANTE_COND_ACAD + " TEXT , "+
                 Constantebd.TABLE_POSTULANTE_CAT_ESTUD + " TEXT , " +
                 Constantebd.TABLE_POSTULANTE_TIPO_BUSQ+" TEXT, " +
-                Constantebd.TABLE_POSTULANTE_ESTADO+" BOOLEAN , " +
+                Constantebd.TABLE_POSTULANTE_ESTADO+" INTEGER DEFAULT 0 , " +
                 Constantebd.TABLE_POSTULANTE_EMPRESA+ " TEXT , " +
                 Constantebd.TABLE_POSTULANTE_CARGO +" TEXT )";
 
@@ -79,7 +79,6 @@ public class BdQuicksJob extends SQLiteOpenHelper {
                 Constantebd.TABLE_OFERTA_GENERO + " TEXT, " +
                 Constantebd.TABLE_OFERTA_RAMAS + " TEXT, "+
                 Constantebd.TABLE_OFERTA_FECHA_PUBLICACION+ " TEXT, "+
-                Constantebd.TABLE_OFERTA_NRO_POSTULANTES + " INTEGER, " +
                 Constantebd.TABLE_OFERTA_ID_EMPRESA + " INTEGER, " +
                 "FOREIGN KEY ( " + Constantebd.TABLE_OFERTA_ID_EMPRESA + ") " + referencias.ID_EMPRESA + " )";
                 ;
@@ -88,8 +87,9 @@ public class BdQuicksJob extends SQLiteOpenHelper {
                 BaseColumns._ID + " INTEGER  PRIMARY KEY AUTOINCREMENT, "+
                 Constantebd.TABLE_POSTULACIONES_ID_POSTULANTE + " INTEGER, " +
                 Constantebd.TABLE_POSTULACIONES_ID_OFERTA+ " INTEGER , " +
-                Constantebd.TABLE_POSTULACIONES_NOTIFUSRS+ " BOOLEAN, " +
-                Constantebd.TABLE_POSTULACIONES_NOTIFEMP + " BOOLEAN , " +
+                Constantebd.TABLE_POSTULACIONES_NOTIFUSRS+ " INTEGER DEFAULT 0, " +
+                Constantebd.TABLE_POSTULACIONES_NOTIFEMP + " INTEGER DEFAULT 0 , " +
+                Constantebd.TABLE_POSTULACIONES_NRO_POSTULANTES + " INTEGER , " +
                 " FOREIGN KEY ( " + Constantebd.TABLE_POSTULACIONES_ID_POSTULANTE + " ) " + referencias.ID_POSTULANTE + " , " +
                 " FOREIGN KEY ( " + Constantebd.TABLE_POSTULACIONES_ID_OFERTA + " ) " + referencias.ID_OFERTA + " ) ";
 

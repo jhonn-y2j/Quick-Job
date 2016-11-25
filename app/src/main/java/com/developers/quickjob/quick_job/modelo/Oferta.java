@@ -29,7 +29,6 @@ public class Oferta {
 
     //adicional
     private String fecha_publicacion;
-    private int cantidad_postulantes;
 
     public Empresa getEmpresa() {
         return empresa;
@@ -159,11 +158,4 @@ public class Oferta {
         this.fecha_publicacion = fecha_publicacion;
     }
 
-    public int getCantidad_postulantes() {
-        return cantidad_postulantes;
-    }
-
-    public void setCantidad_postulantes(int cantidad_postulantes) {
-        this.cantidad_postulantes = cantidad_postulantes;
-    }
 }
