@@ -96,9 +96,7 @@ public class MainActivityEmp extends AppCompatActivity
         Fragment fragment= null;
         if(id==R.id.nav_perfil_emp){
             fragment = new fragment_perfil_empresa();
-        }
-
-        if (id==R.id.nav_ofertas_emp){
+        }else if (id==R.id.nav_ofertas_emp){
             fragment= new fragment_oferta();
         }else if (id== R.id.nav_publicaciones_emp){
             fragment = new fragmetn_ofertas_publicadas();

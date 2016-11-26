@@ -39,8 +39,6 @@ public class fragment_perfil_empresa extends Fragment {
     EditText departamento_emp;
     @BindView(R.id.text_ubic_provin_fap)
     EditText provincia_emp;
-    @BindView(R.id.text_ubic_dist_fap)
-    EditText distrito;
     @BindView(R.id.text_ubic_direcc_fap)
     EditText direcc_emp;
 
@@ -64,13 +62,13 @@ public class fragment_perfil_empresa extends Fragment {
             nom_emp.setText(empresa.getNombre_comercial());
             sector.setText(empresa.getSector());
             tipo_emp.setText(empresa.getTipo_empresa());
-            anio_fund.setText(empresa.getFundacion_anho());
-            num_trab.setText(empresa.getNro_trabajadores());
-            telf_emp.setText(empresa.getTelef_referencia());
+            anio_fund.setText(""+empresa.getFundacion_anho());
+            Log.d(fragment_perfil_empresa.class.getName(),"anho "+ empresa.getFundacion_anho());
+            num_trab.setText(""+empresa.getNro_trabajadores());
+            telf_emp.setText(""+empresa.getTelef_referencia());
             ruc_emp.setText(empresa.getRuc());
             departamento_emp.setText(empresa.getUbic_dprt());
             provincia_emp.setText(empresa.getUbic_provincia());
-            distrito.setText(empresa.getUbic_distrito());
             direcc_emp.setText(empresa.getUbic_direccion());
         }
 

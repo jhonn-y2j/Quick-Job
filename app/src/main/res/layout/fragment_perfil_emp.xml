@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/img_backgroud_app"
     tools:context="com.developers.quickjob.quick_job.fragment_emp.fragment_perfil_empresa">
 
     <ScrollView
@@ -39,11 +40,19 @@
                         android:id="@+id/text_mom_emp_fap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:enabled="false"
                         android:hint="Nombre Comercial" />
 
                     <EditText
                         android:id="@+id/text_sector_fap"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
@@ -72,7 +81,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Datos Personales" />
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:text="Datos Generales" />
                 <!-- Datos Personales-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -83,12 +94,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:text="Tipo" />
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:text="Tipo de Empresa" />
 
                     <EditText
                         android:id="@+id/text_tipoempresa_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="" />
@@ -103,6 +120,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:layout_weight="2"
                         android:text="Fundada en" />
 
@@ -110,6 +129,9 @@
                         android:id="@+id/text_anio_fund_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="14/04/1994" />
@@ -125,6 +147,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:text="N° trabajadores" />
 
                     <EditText
@@ -132,6 +156,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:enabled="false"
                         android:inputType="number"
                         android:text=" " />
@@ -147,12 +174,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:text="Teléfono" />
 
                     <EditText
                         android:id="@+id/text_telef_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="999734789" />
@@ -166,6 +198,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:layout_weight="2"
                         android:text="RUC" />
 
@@ -173,6 +207,9 @@
                         android:id="@+id/text_ruc_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="" />
@@ -182,6 +219,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     android:text="Ubicación de la sede central" />
 
                 <LinearLayout
@@ -192,6 +231,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:layout_weight="2"
                         android:text="Departamento" />
 
@@ -199,6 +240,9 @@
                         android:id="@+id/text_ubic_depart_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="departamento" />
@@ -213,6 +257,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:layout_weight="2"
                         android:text="Provincia" />
 
@@ -220,6 +266,9 @@
                         android:id="@+id/text_ubic_provin_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="provincia" />
@@ -234,27 +283,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Distrito" />
-
-                    <EditText
-                        android:id="@+id/text_ubic_dist_fap"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:enabled="false"
-                        android:text="distrito" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:layout_weight="2"
                         android:text="Dirección exacta" />
 
@@ -262,6 +292,9 @@
                         android:id="@+id/text_ubic_direcc_fap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
                         android:layout_weight="3"
                         android:enabled="false"
                         android:text="dirección" />
