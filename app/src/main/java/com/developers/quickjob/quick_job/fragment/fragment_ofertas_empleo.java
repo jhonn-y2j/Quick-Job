@@ -17,6 +17,11 @@ import com.developers.quickjob.quick_job.adapter_emp.AdapterPublicaciones;
 import com.developers.quickjob.quick_job.fragment_emp.fragmetn_ofertas_publicadas;
 import com.developers.quickjob.quick_job.modelo.Oferta;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 

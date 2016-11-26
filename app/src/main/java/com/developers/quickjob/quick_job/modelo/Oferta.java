@@ -1,9 +1,11 @@
 package com.developers.quickjob.quick_job.modelo;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * Created by jhonn_aj on 24/11/2016.
  */
-
+@IgnoreExtraProperties
 public class Oferta {
 
     private String id;
@@ -29,6 +31,9 @@ public class Oferta {
 
     //adicional
     private String fecha_publicacion;
+
+    public Oferta() {
+    }
 
     public Empresa getEmpresa() {
         return empresa;

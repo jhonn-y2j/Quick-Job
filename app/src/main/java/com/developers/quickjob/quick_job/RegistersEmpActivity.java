@@ -92,8 +92,11 @@ public class RegistersEmpActivity extends AppCompatActivity {
             empresa.setUbic_direccion(distr.getText().toString());
 
             if (db.registrarEmpresa(empresa)==true){
-                db.obtenerEmpresa();
-                Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + ");
+                ///db.obtenerEmpresa();
+                String id=db.verficaremprs(empresa.getCorreo(),empresa.getContrasenha());
+                Intent intent= new Intent(getApplicationContext(),MainActivityEmp.class);
+                intent.putExtra(MainActivityEmp.ID,id);
+                Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + " + id);
                 startActivity(new Intent(getApplicationContext(), MainActivityEmp.class));
             }else{
                 Toast.makeText(getApplicationContext(), " Completar campos requeridos ", Toast.LENGTH_SHORT).show();

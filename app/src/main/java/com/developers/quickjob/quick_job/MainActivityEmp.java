@@ -41,7 +41,13 @@ public class MainActivityEmp extends AppCompatActivity
 
         idemps=getIntent().getStringExtra(ID);
 
-        Log.d(MainActivityEmp.class.getName(),idemps);
+        //Log.d(MainActivityEmp.class.getName(),idemps);
+
+        Fragment fragment= new fragmetn_ofertas_publicadas();
+        Bundle bundle= new Bundle();
+        bundle.putInt(ID,Integer.parseInt(idemps));
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

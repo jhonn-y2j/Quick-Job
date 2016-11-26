@@ -386,6 +386,10 @@ public class Operacionesbd {
     }
 
 
+    public int getOfertaId(){
+        return 0;
+    }
+
 
 
 }

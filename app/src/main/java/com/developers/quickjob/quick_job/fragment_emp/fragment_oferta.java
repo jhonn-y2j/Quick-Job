@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.developers.quickjob.quick_job.R;
 import com.developers.quickjob.quick_job.modelo.Oferta;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 
@@ -64,6 +66,10 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
     String sperfil;
     String ssexo;
 
+    // firebase
+
+    private DatabaseReference databaseReference;
+
 
     @Nullable
     @Override
@@ -71,6 +77,8 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         View view = inflater.inflate(R.layout.fragment_publ_oferta, container, false);
         ButterKnife.bind(this, view);
         db=Operacionesbd.getInstancia(getActivity());
+
+        databaseReference= FirebaseDatabase.getInstance().getReference();
 
         idemps=getArguments().getInt(ID);
 
@@ -105,6 +113,7 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         oferta.setId_empresa(idemps);
 
         if (db.publicarOferta(oferta)){
+            databaseReference.child("ofertas").child(String.valueOf(idemps)).setValue(oferta);
             Toast.makeText(getActivity()," Registrado", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getActivity(),"Completar datos", Toast.LENGTH_SHORT).show();

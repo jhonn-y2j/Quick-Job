@@ -2,62 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:background="@color/cardview_dark_background"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <TextView
-            android:padding="10dp"
-            android:text="@string/etiq_nombemp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <TextView
+                android:text="@string/etiq_nombemp"
                 android:layout_width="match_parent"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/txt_ofer_emp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/txt_ofer_puesto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/txt_ofer_emp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_postular"
+                android:text="@string/hint_postular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/txt_ofer_puesto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        </LinearLayout>
 
-
-
-            </LinearLayout>
-
-        </ScrollView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp">
-        <Button
-            android:id="@+id/btn_postular"
-            android:text="@string/hint_postular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

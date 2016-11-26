@@ -22,8 +22,8 @@ import butterknife.OnClick;
 
 public class OfertaDetalleActivity extends AppCompatActivity {
 
-    @BindView(R.id.txt_ofer_emp)
-    TextView ofert_emp;
+    @BindView(R.id.txt_ofer_area)
+    TextView ofert_area;
     @BindView(R.id.txt_ofer_puesto)
     TextView ofert_puesto;
     @BindView(R.id.btn_postular)
