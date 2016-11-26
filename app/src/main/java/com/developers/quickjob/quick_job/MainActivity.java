@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         idusers=getIntent().getStringExtra(ID);
 
-        Log.d(MainActivity.class.getName(),idusers);
+       // Log.d(MainActivity.class.getName(),idusers);
 
         Fragment fragment=new fragment_ofertas_empleo();
         Bundle bundle= new Bundle();
