@@ -5,7 +5,6 @@ import com.google.firebase.database.IgnoreExtraProperties;
 /**
  * Created by jhonn_aj on 24/11/2016.
  */
-@IgnoreExtraProperties
 public class Oferta {
 
     private String id;

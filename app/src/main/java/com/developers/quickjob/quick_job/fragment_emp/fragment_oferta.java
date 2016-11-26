@@ -66,19 +66,12 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
     String sperfil;
     String ssexo;
 
-    // firebase
-
-    private DatabaseReference databaseReference;
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_publ_oferta, container, false);
         ButterKnife.bind(this, view);
         db=Operacionesbd.getInstancia(getActivity());
-
-        databaseReference= FirebaseDatabase.getInstance().getReference();
 
         idemps=getArguments().getInt(ID);
 
@@ -113,7 +106,7 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         oferta.setId_empresa(idemps);
 
         if (db.publicarOferta(oferta)){
-            databaseReference.child("ofertas").child(String.valueOf(idemps)).setValue(oferta);
+            //databaseReference.child("ofertas").child(String.valueOf(idemps)).setValue(oferta);
             Toast.makeText(getActivity()," Registrado", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getActivity(),"Completar datos", Toast.LENGTH_SHORT).show();
