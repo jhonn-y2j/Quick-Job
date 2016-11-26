@@ -27,11 +27,17 @@
 
         </activity>
 
-        <activity android:name=".RegistersUsrsActivity">
+        <activity android:name=".RegistersUsrsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity"/>
 
         </activity>
 
-        <activity android:name=".RegistersEmpActivity">
+        <activity android:name=".RegistersEmpActivity"
+            android:theme="@style/AppTheme">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity"/>
 
         </activity>
 
@@ -40,7 +46,8 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".OfertaDetalleActivity">
+        <activity android:name=".OfertaDetalleActivity"
+            android:theme="@style/AppTheme">
 
         </activity>
 

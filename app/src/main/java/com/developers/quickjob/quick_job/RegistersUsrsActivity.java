@@ -101,6 +101,12 @@ public class RegistersUsrsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registers_usrs);
 
+        this.setTitle("Crea tu cuenta");
+
+        if (this.getSupportActionBar()!=null){
+            this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         ButterKnife.bind(this);
 
         db= Operacionesbd.getInstancia(getApplicationContext());

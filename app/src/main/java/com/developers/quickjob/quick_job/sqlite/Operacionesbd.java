@@ -329,6 +329,55 @@ public class Operacionesbd {
         return ofertas;
     }
 
+    public Oferta getOfertasXId(int idoferta){
+
+        Oferta oferta=null;
+
+        SQLiteDatabase database=db.getWritableDatabase();
+
+        String sql=String.format(" select * from %s where %s.%s=?",
+                Constantebd.TABLE_OFERTA
+                ,Constantebd.TABLE_OFERTA,Constantebd.TABLE_OFERTA_ID);
+
+        String argumentos[]={String.valueOf(idoferta)};
+
+        Cursor registro= database.rawQuery(sql,argumentos);
+
+        if (registro.moveToNext()){
+            oferta= new Oferta();
+            oferta.setId(String.valueOf(registro.getInt(0)));
+            oferta.setPuesto(registro.getString(1));
+            oferta.setArea(registro.getString(2));
+            oferta.setTipo_trabajo(registro.getString(3));
+            oferta.setDisponibilidad(registro.getString(4));
+            oferta.setSueldo(registro.getString(5));
+            oferta.setFecha_inicio(registro.getString(6));
+            oferta.setUbicacion_job(registro.getString(7));
+            oferta.setRequisitos(registro.getString(8));
+            oferta.setFunciones(registro.getString(9));
+            oferta.setPerfil(registro.getString(10));
+            oferta.setGenero(registro.getString(11));
+            oferta.setRamas_carrera(registro.getString(12));
+            oferta.setFecha_publicacion(registro.getString(13));
+
+            String sql1=String.format(" select nomb_comercial from %s where %s.%s=?",
+                    Constantebd.TABLE_EMPRESA
+                    ,Constantebd.TABLE_EMPRESA,Constantebd.TABLE_EMPRESA_ID);
+
+            String [] arg={String.valueOf(registro.getInt(14))};
+            Cursor data = database.rawQuery(sql1,arg);
+            if (data.moveToNext()){
+                Empresa empresa= new Empresa();
+                empresa.setNombre_comercial(data.getString(0));
+                oferta.setEmpresa(empresa);
+            }
+        }
+
+        database.close();
+
+        return oferta;
+    }
+
     // metodo de prueba
 
     public void obtenerOferta(){
@@ -385,10 +434,6 @@ public class Operacionesbd {
         sqLiteDatabase.close();
     }
 
-
-    public int getOfertaId(){
-        return 0;
-    }
 
 
 

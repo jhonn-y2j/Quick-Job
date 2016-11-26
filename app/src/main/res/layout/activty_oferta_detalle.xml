@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/img_backgroud_app"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
@@ -14,17 +15,116 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/text_nomb_emp"
                 android:text="@string/etiq_nombemp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/txt_ofer_area"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/txt_ofer_puesto"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_area"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_tipo"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_disponib"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txt_ofer_sueldo"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_data_home"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_ubicacion"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txt_ofer_req"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:maxLines="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txt_ofer_funciones"
+                android:textSize="18dp"
+                android:maxLines="4"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_perfil"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_genero"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_ramas"
+                android:textSize="18dp"
+                android:maxLines="4"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_ofer_fecha_publicacion"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -33,6 +133,10 @@
                 android:text="@string/hint_postular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
         </LinearLayout>
 
