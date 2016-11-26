@@ -60,5 +60,7 @@ public class fragmetn_ofertas_publicadas extends Fragment implements AdapterPubl
     @Override
     public void itemClick(Oferta app) {
 
+
+
     }
 }

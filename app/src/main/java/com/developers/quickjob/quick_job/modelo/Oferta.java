@@ -1,7 +1,5 @@
 package com.developers.quickjob.quick_job.modelo;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
 /**
  * Created by jhonn_aj on 24/11/2016.
  */

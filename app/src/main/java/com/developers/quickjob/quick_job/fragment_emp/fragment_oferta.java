@@ -16,8 +16,6 @@ import android.widget.Toast;
 import com.developers.quickjob.quick_job.R;
 import com.developers.quickjob.quick_job.modelo.Oferta;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 

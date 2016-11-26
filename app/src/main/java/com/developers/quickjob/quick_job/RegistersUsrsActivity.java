@@ -1,5 +1,6 @@
 package com.developers.quickjob.quick_job;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,12 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.developers.quickjob.quick_job.Dialog.DateDialog;
 import com.developers.quickjob.quick_job.modelo.Postulante;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
 
@@ -24,7 +28,7 @@ import butterknife.OnClick;
  * Created by jhonn_aj on 24/11/2016.
  */
 
-public class RegistersUsrsActivity extends AppCompatActivity {
+public class RegistersUsrsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     @BindView(R.id.edit_nombres)
     EditText nombres;
@@ -94,6 +98,8 @@ public class RegistersUsrsActivity extends AppCompatActivity {
     boolean estado;
 
     Operacionesbd db;
+    @BindView(R.id.btn_fecha)
+    ImageButton btnFecha;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,26 +109,26 @@ public class RegistersUsrsActivity extends AppCompatActivity {
 
         this.setTitle("Crea tu cuenta");
 
-        if (this.getSupportActionBar()!=null){
+        if (this.getSupportActionBar() != null) {
             this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         ButterKnife.bind(this);
 
-        db= Operacionesbd.getInstancia(getApplicationContext());
+        db = Operacionesbd.getInstancia(getApplicationContext());
 
     }
 
-    public void onRadioExpClicked(View view){
-        boolean marcado=((RadioButton) view).isChecked();
-        switch (view.getId()){
+    public void onRadioExpClicked(View view) {
+        boolean marcado = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
             case R.id.radio_exp_si:
-                if (marcado){
+                if (marcado) {
                     experiencia.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.radio_exp_no:
-                if (marcado){
+                if (marcado) {
                     experiencia.setVisibility(View.GONE);
                     emprs_exp.setText(" ");
                     emprs_cargo.setText(" ");
@@ -181,10 +187,10 @@ public class RegistersUsrsActivity extends AppCompatActivity {
 
             if (db.registrarPostulante(postulante)) {
                 db.obtenerPostulante();
-                String id=db.verficarusrs(postulante.getCorreo(),postulante.getContrasenha());
+                String id = db.verficarusrs(postulante.getCorreo(), postulante.getContrasenha());
                 Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + ");
-                Intent intent= new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra(MainActivity.ID,id);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra(MainActivity.ID, id);
                 startActivity(intent);
 
             } else {
@@ -192,5 +198,16 @@ public class RegistersUsrsActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    @OnClick(R.id.btn_fecha)
+    public void onClick() {
+        DateDialog dateDialog =new DateDialog();
+        dateDialog.show(getSupportFragmentManager(), "datepicker");
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        date_nac.setText("Fecha Nac.: " + i2 + "/" + i1 + "/" + i);
     }
 }
