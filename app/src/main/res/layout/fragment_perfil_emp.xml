@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.developers.quickjob.quick_job.fragment_emp.perfil_emp">
+    tools:context="com.developers.quickjob.quick_job.fragment_emp.fragment_perfil_empresa">
 
     <ScrollView
         android:layout_width="match_parent"

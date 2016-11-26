@@ -206,6 +206,31 @@ public class Operacionesbd {
 
     }
 
+    public Empresa getPerfilEmpresa(int idemps){
+        Empresa empresa = null;
+        SQLiteDatabase database = db.getWritableDatabase();
+        String query = "select * from "+Constantebd.TABLE_EMPRESA+ "whuere"+Constantebd.TABLE_EMPRESA_ID+" = "+ idemps;
+        Cursor registro = database.rawQuery(query,null);
+
+        if(registro.moveToNext()){
+            empresa=new Empresa();
+            empresa.setRuc(registro.getString(1));
+            empresa.setNombre_comercial(registro.getString(2));
+            empresa.setCorreo(registro.getString(3));
+            empresa.setTipo_empresa(registro.getString(5));
+            empresa.setSector(registro.getString(6));
+            empresa.setNro_trabajadores(registro.getInt(7));
+            empresa.setFundacion_anho(registro.getInt(8));
+            empresa.setTelef_referencia(Integer.parseInt(registro.getString(9)));
+            empresa.setUbic_dprt(registro.getString(10));
+            empresa.setUbic_provincia(registro.getString(11));
+            empresa.setUbic_distrito(registro.getString(12));
+            empresa.setUbic_direccion(registro.getString(13));
+            database.close();
+        }
+        return empresa;
+    }
+
 
     // Oferta
     public boolean publicarOferta(Oferta oferta){
