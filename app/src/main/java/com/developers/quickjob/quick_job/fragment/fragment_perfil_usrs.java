@@ -49,8 +49,6 @@ public class fragment_perfil_usrs extends Fragment {
     EditText cond_acd;
     @BindView(R.id.text_exp)
     EditText experiencia;
-    @BindView(R.id.text_exp_laboral)
-    EditText experiencia_laboral;
 
     public static final String ID="id";
     int idusers;
@@ -83,7 +81,7 @@ public class fragment_perfil_usrs extends Fragment {
             buscar.setText(postulante.getTipo_buscqda());
             sit_acad.setText(postulante.getCondicion_acad());
             cond_acd.setText(postulante.getCategorizacion_estud());
-            experiencia_laboral.setText(postulante.getEmpresa_exp()+ " / " + postulante.getEmpresa_cargo());
+            experiencia.setText(postulante.getEmpresa_exp()+ " / " + postulante.getEmpresa_cargo());
         }
 
         Log.d(fragment_perfil_usrs.class.getName(),"holo "+ idusers );
