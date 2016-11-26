@@ -175,8 +175,11 @@ public class RegistersUsrsActivity extends AppCompatActivity {
 
             if (db.registrarPostulante(postulante)) {
                 db.obtenerPostulante();
+                String id=db.verficarusrs(postulante.getCorreo(),postulante.getContrasenha());
                 Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + ");
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent intent= new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("id",Integer.parseInt(id));
+                startActivity(intent);
 
             } else {
                 Toast.makeText(getApplicationContext(), "Completar campos requeridos", Toast.LENGTH_SHORT).show();

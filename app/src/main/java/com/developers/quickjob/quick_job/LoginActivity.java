@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_registrar)
     Button registrarusrs;
     Operacionesbd db;
+    @BindView(R.id.group_iniciar)
+    RadioGroup groupIniciar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,19 +55,30 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_registrar)
     public void handleRegistrar() {
-        startActivity(new Intent(getApplicationContext(), RegistersUsrsActivity.class));
+        if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante) {
+            startActivity(new Intent(getApplicationContext(), RegistersUsrsActivity.class));
+        }else{
+            startActivity(new Intent(getApplicationContext(), RegistersEmpActivity.class));
+        }
     }
 
     @OnClick(R.id.btn_entrar)
     public void handleIniciar() {
-        String email=correo.getText().toString();
-        String pass= password.getText().toString();
-        String id=db.verficarusrs(email,pass);
-        if (id!=null) {
-            Intent intent= new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(MainActivity.ID,id);
-            startActivity(intent);
+        String email = correo.getText().toString();
+        String pass = password.getText().toString();
+        Intent intent;
+        String id=null;
+        if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante){
+            id = db.verficarusrs(email, pass);
+            intent = new Intent(getApplicationContext(), MainActivity.class);
         }else{
+            id = db.verficaremprs(email, pass);
+            intent = new Intent(getApplicationContext(), MainActivityEmp.class);
+        }
+        if (id != null) {
+            intent.putExtra(MainActivity.ID, id);
+            startActivity(intent);
+        } else {
             db.obtenerEmpresa();
             db.obtenerOferta();
             Toast.makeText(getApplicationContext(), " Usuario no registrado ", Toast.LENGTH_SHORT).show();
