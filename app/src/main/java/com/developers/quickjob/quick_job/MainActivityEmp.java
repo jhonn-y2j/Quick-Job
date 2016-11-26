@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
 import com.developers.quickjob.quick_job.fragment_emp.fragment_oferta;
+import com.developers.quickjob.quick_job.fragment_emp.fragment_perfil_empresa;
 import com.developers.quickjob.quick_job.fragment_emp.fragmetn_ofertas_publicadas;
 
 import butterknife.ButterKnife;
@@ -87,6 +88,9 @@ public class MainActivityEmp extends AppCompatActivity
         int id = item.getItemId();
 
         Fragment fragment= null;
+        if(id==R.id.nav_perfil_emp){
+            fragment = new fragment_perfil_empresa();
+        }
 
         if (id==R.id.nav_ofertas_emp){
             fragment= new fragment_oferta();

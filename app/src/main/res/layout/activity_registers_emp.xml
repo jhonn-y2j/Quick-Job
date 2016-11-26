@@ -18,7 +18,9 @@
             android:orientation="vertical">
 
                 <TextView
-                    android:padding="@dimen/fab_10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la empresa"/>
@@ -35,7 +37,9 @@
                         android:hint="Nombre comercial"/>
 
                 <TextView
-                    android:padding="@dimen/fab_10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la Cuenta"/>
@@ -43,21 +47,26 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
                         android:id="@+id/edit_email_emp"
                         android:hint="email"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_pass_emp"
+                        android:inputType="textPassword"
                         android:hint="contraseña(min 6 digitos)"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_passconf_emp"
+                        android:inputType="textPassword"
                         android:hint="Confirmar contraseña"/>
 
                 <TextView
-                    android:padding="@dimen/fab_10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la empresa"/>

@@ -209,7 +209,7 @@ public class Operacionesbd {
     public Empresa getPerfilEmpresa(int idemps){
         Empresa empresa = null;
         SQLiteDatabase database = db.getWritableDatabase();
-        String query = "select * from "+Constantebd.TABLE_EMPRESA+ "whuere"+Constantebd.TABLE_EMPRESA_ID+" = "+ idemps;
+        String query = "select * from "+Constantebd.TABLE_EMPRESA+ " where "+Constantebd.TABLE_EMPRESA_ID+" = "+ idemps;
         Cursor registro = database.rawQuery(query,null);
 
         if(registro.moveToNext()){
