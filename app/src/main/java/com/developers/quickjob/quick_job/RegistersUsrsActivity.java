@@ -178,7 +178,7 @@ public class RegistersUsrsActivity extends AppCompatActivity {
                 String id=db.verficarusrs(postulante.getCorreo(),postulante.getContrasenha());
                 Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + ");
                 Intent intent= new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("id",Integer.parseInt(id));
+                intent.putExtra(MainActivity.ID,id);
                 startActivity(intent);
 
             } else {

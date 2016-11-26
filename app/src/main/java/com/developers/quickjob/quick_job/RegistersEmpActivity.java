@@ -96,8 +96,8 @@ public class RegistersEmpActivity extends AppCompatActivity {
                 String id=db.verficaremprs(empresa.getCorreo(),empresa.getContrasenha());
                 Intent intent= new Intent(getApplicationContext(),MainActivityEmp.class);
                 intent.putExtra(MainActivityEmp.ID,id);
-                Log.d(RegistersUsrsActivity.class.getName(), " Registrado  + " + id);
-                startActivity(new Intent(getApplicationContext(), MainActivityEmp.class));
+                Log.d(RegistersEmpActivity.class.getName(), " Registrado  + " + id);
+                startActivity(intent);
             }else{
                 Toast.makeText(getApplicationContext(), " Completar campos requeridos ", Toast.LENGTH_SHORT).show();
             }
