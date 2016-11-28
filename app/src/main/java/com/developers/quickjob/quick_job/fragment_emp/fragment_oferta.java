@@ -118,7 +118,7 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         oferta.setGenero(ssexo);
         oferta.setRamas_carrera(ramas.getText().toString());
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMMM dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String publicacion = simpleDateFormat.format(System.currentTimeMillis());
         oferta.setFecha_publicacion(publicacion);
         Log.d(fragment_oferta.class.getName(), publicacion);
