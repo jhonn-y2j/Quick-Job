@@ -16,9 +16,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.developers.quickjob.quick_job.Dialog.DateDialog;
 import com.developers.quickjob.quick_job.modelo.Postulante;
+import com.developers.quickjob.quick_job.restapi.VolleySingleton;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -185,6 +197,8 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
             postulante.setEmpresa_exp(emprs_exp.getText().toString());
             postulante.setEmpresa_cargo(emprs_cargo.getText().toString());
 
+            registrarPostulante(postulante);/*
+
             if (db.registrarPostulante(postulante)) {
                 db.obtenerPostulante();
                 String id = db.verficarusrs(postulante.getCorreo(), postulante.getContrasenha());
@@ -195,10 +209,105 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
 
             } else {
                 Toast.makeText(getApplicationContext(), "Completar campos requeridos", Toast.LENGTH_SHORT).show();
-            }
+            }*/
         }
 
     }
+
+    public void registrarPostulante(Postulante postulante){
+
+        String url="http://unmsmquickjob.pe.hu/quickjob/registrar_postulante.php";
+
+        final String nombre=postulante.getNombres();
+        final String apellidos= postulante.getApellidos();
+        final String mail=postulante.getCorreo();
+        final String pass=postulante.getContrasenha();
+        final String fech_nac=postulante.getFecha_nacimiento();
+        final String direcc=postulante.getDireccion();
+        final String telef=String.valueOf(postulante.getTelefono());
+        final String genero=postulante.getGenero();
+        final String dond_est=postulante.getCentro_estudios();
+        final String carrera=postulante.getCarrera();
+        final String cond_acad=postulante.getCondicion_acad();
+        final String cat_est=postulante.getCategorizacion_estud();
+        final String tipo_busq=postulante.getTipo_buscqda();
+        final String estado= String.valueOf(postulante.isExperiencia());
+        final String empresa=postulante.getEmpresa_exp();
+        final String cargo=postulante.getEmpresa_cargo();
+
+
+        HashMap<String,String> map = new HashMap<>();
+
+        map.put("noms",nombre);
+        map.put("apells",apellidos);
+        map.put("correo",mail);
+        map.put("pass",pass);
+        map.put("telef",telef);
+        map.put("fecha_nac",fech_nac);
+        map.put("direccion",direcc);
+        map.put("genero",genero);
+        map.put("centro_estud",dond_est);
+        map.put("carrera",carrera);
+        map.put("cond_academ",cond_acad);
+        map.put("categ_estud",cat_est);
+        map.put("tipo_busq",tipo_busq);
+        map.put("estado",estado);
+        map.put("empresa",empresa);
+        map.put("cargo",cargo);
+
+        JSONObject jsonObject= new JSONObject(map);
+
+        Log.d(RegistersUsrsActivity.class.getName(),jsonObject.toString());
+
+        VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(
+                new JsonObjectRequest(Request.Method.POST, url, jsonObject,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                procesarRespuesta(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d(RegistersEmpActivity.class.getName(), "Error Volley: " + error.getMessage());
+                    }
+                }){
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String ,String> headers= new HashMap<String, String>();
+                        headers.put("Content-Type","application/json; charset=utf-8");
+                        headers.put("Accept","application/json");
+                        return headers;
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8" + getParamsEncoding();
+                    }
+                });
+
+    }
+
+
+    private void procesarRespuesta(JSONObject response) {
+        try {
+            String estado = response.getString("estado");
+            String mensaje = response.getString("mensaje");
+            switch (estado) {
+                case "1":
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    break;
+                case "2":
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                    break;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @OnClick(R.id.btn_fecha)
     public void onClick() {
