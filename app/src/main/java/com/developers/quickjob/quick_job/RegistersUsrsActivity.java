@@ -216,10 +216,7 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
 
     }
 
-    public void registrarPostulante(Postulante postulante){
-
-    }
-
+    public void registrarPostulante(Postulante postulante){}
 /*
     public void registrarPostulante(Postulante postulante){
 
@@ -307,8 +304,7 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }*/
-
+*/
     @OnClick(R.id.btn_fecha)
     public void onClick() {
         DateDialog dateDialog =new DateDialog();
