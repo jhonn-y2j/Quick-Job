@@ -99,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
             VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonArrayRequest);
+            //id[0] = db.verficarusrs(email, pass);
+            //intent = new Intent(getApplicationContext(), MainActivity.class);
         }else{
             String url="http://unmsmquickjob.pe.hu/quickjob/verificar_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
             JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {

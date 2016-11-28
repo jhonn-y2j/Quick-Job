@@ -16,22 +16,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.developers.quickjob.quick_job.Dialog.DateDialog;
-import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.modelo.Postulante;
-import com.developers.quickjob.quick_job.restapi.VolleySingleton;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -198,9 +185,6 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
             postulante.setEmpresa_exp(emprs_exp.getText().toString());
             postulante.setEmpresa_cargo(emprs_cargo.getText().toString());
 
-            registrarPostulante(postulante);
-
-/*
             if (db.registrarPostulante(postulante)) {
                 db.obtenerPostulante();
                 String id = db.verficarusrs(postulante.getCorreo(), postulante.getContrasenha());
@@ -211,100 +195,11 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
 
             } else {
                 Toast.makeText(getApplicationContext(), "Completar campos requeridos", Toast.LENGTH_SHORT).show();
-            }*/
-        }
-
-    }
-
-    public void registrarPostulante(Postulante postulante){}
-/*
-    public void registrarPostulante(Postulante postulante){
-
-        String url="http://unmsmquickjob.pe.hu/quickjob/registrar_empresa.php";
-
-        final String ruc=empresa.getRuc();
-        final String nomb=empresa.getNombre_comercial();
-        final String correo=empresa.getCorreo();
-        final String pass=empresa.getContrasenha();
-        final String tipo=empresa.getTipo_empresa();
-        final String sector=empresa.getSector();
-        final String nro=String.valueOf(empresa.getNro_trabajadores());
-        final String fund=String.valueOf(empresa.getFundacion_anho());
-        final String telef=String.valueOf(empresa.getTelef_referencia());
-        final String dpto=empresa.getUbic_dprt();
-        final String prov=empresa.getUbic_provincia();
-        final String distrit=empresa.getUbic_direccion();
-        final String direc=empresa.getUbic_direccion();
-
-        HashMap<String,String> map = new HashMap<>();
-        map.put("ruc",ruc);
-        map.put("nomb",nomb);
-        map.put("correo",correo);
-        map.put("pass",pass);
-        map.put("tipo",tipo);
-        map.put("sector",sector);
-        map.put("num",nro);
-        map.put("anio",fund);
-        map.put("telf",telef);
-        map.put("dpto",dpto);
-        map.put("provincia",prov);
-        map.put("distrito",distrit);
-        map.put("direccion",direc);
-
-        JSONObject jsonObject= new JSONObject(map);
-
-        Log.d(RegistersEmpActivity.class.getName(),jsonObject.toString());
-
-        VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(
-                new JsonObjectRequest(Request.Method.POST, url, jsonObject,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                procesarRespuesta(response);
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(RegistersEmpActivity.class.getName(), "Error Volley: " + error.getMessage());
-                    }
-                }){
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        Map<String ,String> headers= new HashMap<String, String>();
-                        headers.put("Content-Type","application/json; charset=utf-8");
-                        headers.put("Accept","application/json");
-                        return headers;
-                    }
-
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/json; charset=utf-8" + getParamsEncoding();
-                    }
-                });
-
-    }
-
-    private void procesarRespuesta(JSONObject response){}
-
-
-    private void procesarRespuesta(JSONObject response){
-        try {
-            String estado=response.getString("estado");
-            String mensaje= response.getString("mensaje");
-            switch (estado){
-                case "1":
-                    Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    break;
-                case "2":
-                    Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_LONG).show();
-                    break;
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-*/
+
+    }
+
     @OnClick(R.id.btn_fecha)
     public void onClick() {
         DateDialog dateDialog =new DateDialog();
