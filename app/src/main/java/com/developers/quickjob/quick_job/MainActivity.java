@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity
         }else if (id==R.id.nav_postulaciones){
             toolbar.setTitle(" ");
             fragment= new fragment_postulaciones();
+        }else if (id==R.id.nav_close){
+            this.finish();
         }
 
         if (fragment!=null){

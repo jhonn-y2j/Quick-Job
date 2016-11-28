@@ -99,6 +99,8 @@ public class MainActivityEmp extends AppCompatActivity
             fragment= new fragment_oferta();
         }else if (id== R.id.nav_publicaciones_emp){
             fragment = new fragmetn_ofertas_publicadas();
+        }else if (id==R.id.nav_close_emp){
+            this.finish();
         }
 
         if (fragment!=null){
