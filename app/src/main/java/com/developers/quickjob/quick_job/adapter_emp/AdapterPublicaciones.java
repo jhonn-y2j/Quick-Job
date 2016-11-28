@@ -49,7 +49,10 @@ public class AdapterPublicaciones extends RecyclerView.Adapter<AdapterPublicacio
 
     @Override
     public int getItemCount() {
-        return this.ofertaList.size();
+        if (ofertaList!=null) {
+            return this.ofertaList.size();
+        }
+        return 0;
     }
 
     public interface OnItemClickOferta{

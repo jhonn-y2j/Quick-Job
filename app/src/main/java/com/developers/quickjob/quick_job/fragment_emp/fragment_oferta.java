@@ -160,7 +160,7 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
         map.put("a",a);
         map.put("t",t);
         map.put("d",d);
-        map.put("s",t);
+        map.put("s",s);
         map.put("fi",fi);
         map.put("u",u);
         map.put("rs",rs);
