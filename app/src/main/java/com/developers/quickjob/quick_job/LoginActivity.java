@@ -86,8 +86,19 @@ public class LoginActivity extends AppCompatActivity {
         String pass = password.getText().toString();
         //Intent intent;
         if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante){
-            //id[0] = db.verficarusrs(email, pass);
-            //intent = new Intent(getApplicationContext(), MainActivity.class);
+            String url="http://unmsmquickjob.pe.hu/quickjob/verificar_postulante.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
+            JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    procesarRespuestaPostulante(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonArrayRequest);
         }else{
             String url="http://unmsmquickjob.pe.hu/quickjob/verificar_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
             JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
@@ -130,6 +141,46 @@ public class LoginActivity extends AppCompatActivity {
                     id[0]=jsonObject.getString("empresa_id");
                     Log.d(LoginActivity.class.getName(),id[0]);
                     Intent intent = new Intent(getApplicationContext(), MainActivityEmp.class);
+                    intent.putExtra(MainActivity.ID, id[0]);
+                    startActivity(intent);
+                    break;
+
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    Toast.makeText(
+                            getApplicationContext(),
+                            mensaje2,
+                            Toast.LENGTH_LONG).show();
+                    break;
+
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    Toast.makeText(
+                            getApplicationContext(),
+                            mensaje3,
+                            Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void procesarRespuestaPostulante(JSONObject response) {
+
+        try {
+            String mensaje = response.getString("estado");
+            switch (mensaje) {
+                case "1":
+                    // Obtener objeto "meta"
+                    JSONArray jsonArray=response.getJSONArray("postulante");
+                    JSONObject jsonObject=jsonArray.getJSONObject(0);
+                    id[0]=jsonObject.getString("id_postulante");
+                    Log.d(LoginActivity.class.getName(),id[0]);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra(MainActivity.ID, id[0]);
                     startActivity(intent);
                     break;
