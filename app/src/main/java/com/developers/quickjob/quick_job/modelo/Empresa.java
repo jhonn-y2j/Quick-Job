@@ -16,7 +16,7 @@ public class Empresa {
     private String tipo_empresa;
     private String sector;
     private int nro_trabajadores;
-    private int fundacion_anho;
+    private String fundacion_anho;
     private int telef_referencia;
     private String ubic_dprt;
     private String ubic_provincia;
@@ -79,11 +79,11 @@ public class Empresa {
         this.nro_trabajadores = nro_trabajadores;
     }
 
-    public int getFundacion_anho() {
+    public String getFundacion_anho() {
         return fundacion_anho;
     }
 
-    public void setFundacion_anho(int fundacion_anho) {
+    public void setFundacion_anho(String fundacion_anho) {
         this.fundacion_anho = fundacion_anho;
     }
 

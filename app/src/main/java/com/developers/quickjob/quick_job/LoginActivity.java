@@ -1,9 +1,11 @@
 package com.developers.quickjob.quick_job;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -11,7 +13,19 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.developers.quickjob.quick_job.restapi.VolleySingleton;
+import com.developers.quickjob.quick_job.sqlite.ConsultarNube;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,9 +45,13 @@ public class LoginActivity extends AppCompatActivity {
     Button iniciar;
     @BindView(R.id.btn_registrar)
     Button registrarusrs;
-    Operacionesbd db;
+    //Operacionesbd db;
     @BindView(R.id.group_iniciar)
     RadioGroup groupIniciar;
+
+    //ConsultarNube ws = new ConsultarNube();
+
+    final String[] id = new String[1];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        db = Operacionesbd.getInstancia(getApplicationContext());
+        //db = Operacionesbd.getInstancia(getApplicationContext());
 
     }
 
@@ -66,23 +84,104 @@ public class LoginActivity extends AppCompatActivity {
     public void handleIniciar() {
         String email = correo.getText().toString();
         String pass = password.getText().toString();
-        Intent intent;
-        String id=null;
+        //Intent intent;
         if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante){
-            id = db.verficarusrs(email, pass);
-            intent = new Intent(getApplicationContext(), MainActivity.class);
+            //id[0] = db.verficarusrs(email, pass);
+            //intent = new Intent(getApplicationContext(), MainActivity.class);
         }else{
-            id = db.verficaremprs(email, pass);
-            intent = new Intent(getApplicationContext(), MainActivityEmp.class);
+            String url="http://unmsmquickjob.pe.hu/quickjob/verificar_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
+            JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    procesarRespuesta(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+
+            VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonArrayRequest);
+           // new consultarDatos().execute("http://unmsmquickjob.pe.hu/quickjob/consulta_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString());
+            /*id = db.verficaremprs(email, pass);
+            intent = new Intent(getApplicationContext(), MainActivityEmp.class);*/
         }
-        if (id != null) {
+       /* if (id != null) {
             intent.putExtra(MainActivity.ID, id);
             startActivity(intent);
         } else {
             //db.obtenerEmpresa();
             //db.obtenerOferta();
             Toast.makeText(getApplicationContext(), " Usuario no registrado ", Toast.LENGTH_SHORT).show();
-        }
+        }*/
+
     }
+
+    private void procesarRespuesta(JSONObject response) {
+
+        try {
+            String mensaje = response.getString("estado");
+            switch (mensaje) {
+                case "1":
+                    // Obtener objeto "meta"
+                    JSONArray jsonArray=response.getJSONArray("empresa");
+                    JSONObject jsonObject=jsonArray.getJSONObject(0);
+                    id[0]=jsonObject.getString("empresa_id");
+                    Log.d(LoginActivity.class.getName(),id[0]);
+                    Intent intent = new Intent(getApplicationContext(), MainActivityEmp.class);
+                    intent.putExtra(MainActivity.ID, id[0]);
+                    startActivity(intent);
+                    break;
+
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    Toast.makeText(
+                            getApplicationContext(),
+                            mensaje2,
+                            Toast.LENGTH_LONG).show();
+                    break;
+
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    Toast.makeText(
+                            getApplicationContext(),
+                            mensaje3,
+                            Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /*public class consultarDatos extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return ws.downloadUrl(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            JSONArray json = null;
+            try {
+                json = new JSONArray(result);
+                System.out.println("RUC : "+json.getString(1));
+                System.out.println("Nombre empresa: "+json.getString(2));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            System.out.println(" no obtuvo los datos");
+        }
+    }*/
 
 }

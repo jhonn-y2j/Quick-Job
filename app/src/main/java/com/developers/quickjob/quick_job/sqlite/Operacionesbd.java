@@ -220,7 +220,7 @@ public class Operacionesbd {
             empresa.setTipo_empresa(registro.getString(5));
             empresa.setSector(registro.getString(6));
             empresa.setNro_trabajadores(registro.getInt(7));
-            empresa.setFundacion_anho(registro.getInt(8));
+            empresa.setFundacion_anho(registro.getString(8));
             empresa.setTelef_referencia(Integer.parseInt(registro.getString(9)));
             empresa.setUbic_dprt(registro.getString(10));
             empresa.setUbic_provincia(registro.getString(11));
