@@ -100,21 +100,19 @@ public class MainActivity extends AppCompatActivity
         if (id==R.id.nav_perfil){
             toolbar.setTitle("Perfil");
             fragment= new fragment_perfil_usrs();
-            Bundle bundle= new Bundle();
-            bundle.putInt(ID,Integer.parseInt(idusers));
-            fragment.setArguments(bundle);
+
         }else if (id==R.id.nav_ofertas){
             toolbar.setTitle("Ofertas Empleo");
             fragment= new fragment_ofertas_empleo();
-            Bundle bundle= new Bundle();
-            bundle.putInt(ID,Integer.parseInt(idusers));
-            fragment.setArguments(bundle);
         }else if (id==R.id.nav_postulaciones){
             toolbar.setTitle(" ");
             fragment= new fragment_postulaciones();
         }
 
         if (fragment!=null){
+            Bundle bundle= new Bundle();
+            bundle.putInt(ID,Integer.parseInt(idusers));
+            fragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
         }
 
