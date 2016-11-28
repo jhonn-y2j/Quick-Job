@@ -1,6 +1,7 @@
 package com.developers.quickjob.quick_job.fragment_emp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +11,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.developers.quickjob.quick_job.LoginActivity;
+import com.developers.quickjob.quick_job.MainActivity;
+import com.developers.quickjob.quick_job.MainActivityEmp;
 import com.developers.quickjob.quick_job.R;
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
 import com.developers.quickjob.quick_job.modelo.Empresa;
+import com.developers.quickjob.quick_job.restapi.VolleySingleton;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +57,7 @@ public class fragment_perfil_empresa extends Fragment {
 
     public static final String ID="id";
     int idemps;
-    Operacionesbd db;
+    //Operacionesbd db;
 
     @Nullable
     @Override
@@ -52,11 +65,26 @@ public class fragment_perfil_empresa extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_perfil_emp, container, false);
         ButterKnife.bind(this,view);
-        db=Operacionesbd.getInstancia(getActivity());
+        //db=Operacionesbd.getInstancia(getActivity());
 
         idemps=getArguments().getInt(ID);
 
-        Empresa empresa =db.getPerfilEmpresa(idemps);
+        String url="http://unmsmquickjob.pe.hu/quickjob/perfil_empresa.php?id="+idemps;
+        JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                procesarRespuesta(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        VolleySingleton.getInstance(getActivity()).addRequestQueue(jsonArrayRequest);
+
+        /*Empresa empresa =db.getPerfilEmpresa(idemps);
 
         if (empresa!=null){
             nom_emp.setText(empresa.getNombre_comercial());
@@ -70,10 +98,57 @@ public class fragment_perfil_empresa extends Fragment {
             departamento_emp.setText(empresa.getUbic_dprt());
             provincia_emp.setText(empresa.getUbic_provincia());
             direcc_emp.setText(empresa.getUbic_direccion());
-        }
+        }*/
 
         Log.d(fragment_perfil_usrs.class.getName(),"Bienvenido :  "+ idemps );
 
         return view;
     }
+
+    private void procesarRespuesta(JSONObject response) {
+
+        try {
+            String mensaje = response.getString("estado");
+            switch (mensaje) {
+                case "1":
+                    // Obtener objeto "meta"
+                    JSONArray jsonArray=response.getJSONArray("empresa");
+                    JSONObject jsonObject=jsonArray.getJSONObject(0);
+                    nom_emp.setText(jsonObject.getString("empresa_nom_comercial"));
+                    sector.setText(jsonObject.getString("empresa_sector"));
+                    tipo_emp.setText(jsonObject.getString("empresa_tipo_empresa"));
+                    anio_fund.setText(jsonObject.getString("empresa_anio_fund"));
+                    num_trab.setText(jsonObject.getString("empresa_num_trabs"));
+                    telf_emp.setText(jsonObject.getString("empresa_telef"));
+                    ruc_emp.setText(jsonObject.getString("empresa_ruc"));
+                    departamento_emp.setText(jsonObject.getString("empresa_depart"));
+                    provincia_emp.setText(jsonObject.getString("empresa_provincia"));
+                    direcc_emp.setText(jsonObject.getString("empresa_direccion"));
+                    break;
+
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    Toast.makeText(
+                            getActivity(),
+                            mensaje2,
+                            Toast.LENGTH_LONG).show();
+                    break;
+
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    Toast.makeText(
+                            getActivity(),
+                            mensaje3,
+                            Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
