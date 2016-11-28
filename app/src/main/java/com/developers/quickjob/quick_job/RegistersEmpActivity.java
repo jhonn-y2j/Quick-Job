@@ -2,7 +2,6 @@ package com.developers.quickjob.quick_job;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.developers.quickjob.quick_job.Dialog.DateDialog;
 import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
-
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +24,7 @@ import butterknife.OnClick;
  * Created by jhonn_aj on 24/11/2016.
  */
 
-public class RegistersEmpActivity extends AppCompatActivity {
+public class RegistersEmpActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     Operacionesbd db;
     @BindView(R.id.edit_ruc)
@@ -68,7 +66,7 @@ public class RegistersEmpActivity extends AppCompatActivity {
 
         this.setTitle("Crea tu cuenta");
 
-        if (this.getSupportActionBar()!=null){
+        if (this.getSupportActionBar() != null) {
             this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -80,10 +78,10 @@ public class RegistersEmpActivity extends AppCompatActivity {
 
 
     @OnClick(R.id.btn_cuenta_emp)
-    public void handleCuentaEmpresa(){
+    public void handleCuentaEmpresa() {
 
-        if (pass.getText().toString().equals(pass_conf.getText().toString())){
-            Empresa empresa= new Empresa();
+        if (pass.getText().toString().equals(pass_conf.getText().toString())) {
+            Empresa empresa = new Empresa();
             empresa.setRuc(ruc.getText().toString());
             empresa.setNombre_comercial(nombre.getText().toString());
             empresa.setCorreo(email.getText().toString());
@@ -97,14 +95,14 @@ public class RegistersEmpActivity extends AppCompatActivity {
             empresa.setUbic_provincia(prov.getText().toString());
             empresa.setUbic_direccion(distr.getText().toString());
 
-            if (db.registrarEmpresa(empresa)==true){
+            if (db.registrarEmpresa(empresa) == true) {
                 ///db.obtenerEmpresa();
-                String id=db.verficaremprs(empresa.getCorreo(),empresa.getContrasenha());
-                Intent intent= new Intent(getApplicationContext(),MainActivityEmp.class);
-                intent.putExtra(MainActivityEmp.ID,id);
+                String id = db.verficaremprs(empresa.getCorreo(), empresa.getContrasenha());
+                Intent intent = new Intent(getApplicationContext(), MainActivityEmp.class);
+                intent.putExtra(MainActivityEmp.ID, id);
                 Log.d(RegistersEmpActivity.class.getName(), " Registrado  + " + id);
                 startActivity(intent);
-            }else{
+            } else {
                 Toast.makeText(getApplicationContext(), " Completar campos requeridos ", Toast.LENGTH_SHORT).show();
             }
 
@@ -113,4 +111,14 @@ public class RegistersEmpActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        anho.setText("Año Fund.: " + i2 + "/" + i1 + "/" + i);
+    }
+
+    @OnClick(R.id.show_date)
+    public void onClick() {
+        DateDialog dateDialog =new DateDialog();
+        dateDialog.show(getSupportFragmentManager(), "datepicker");
+    }
 }

@@ -18,9 +18,8 @@
             android:orientation="vertical">
 
                 <TextView
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la empresa"/>
@@ -29,44 +28,57 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_ruc"
+                        android:maxLength="11"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
                         android:hint="RUC"/>
                     <EditText
                         android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_nomb_comerc"
                         android:hint="Nombre comercial"/>
 
                 <TextView
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la Cuenta"/>
 
                     <EditText
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
                         android:id="@+id/edit_email_emp"
-                        android:hint="email"/>
+                        android:hint="Email"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_pass_emp"
                         android:inputType="textPassword"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:maxLength="6"
                         android:hint="contraseña(min 6 digitos)"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_passconf_emp"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:maxLength="6"
                         android:inputType="textPassword"
                         android:hint="Confirmar contraseña"/>
 
                 <TextView
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Datos de la empresa"/>
@@ -74,18 +86,27 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
                         android:id="@+id/edit_tipo_emp"
                         android:hint="tipo de empresa"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
                         android:id="@+id/edit_sector"
                         android:hint="sector"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
                         android:id="@+id/edit_nro_jobs"
-                        android:hint="n° aprox de trabajadores"/>
+                        android:hint="N° aprox de trabajadores"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,27 +115,35 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:enabled="false"
+                            android:textAlignment="center"
                             android:id="@+id/edit_anho"
-                            android:hint="año de fundacion"/>
+                            android:hint="Año de fundación: "/>
                         <ImageButton
                             android:layout_width="0dp"
+                            android:padding="5dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:id="@+id/show_date"
-                            app:srcCompat="@android:drawable/ic_menu_my_calendar"
-                            android:tint="@android:color/holo_purple" />
+                            android:background="@color/colorPrimary"
+                            android:tint="@android:color/white"
+                            android:src="@android:drawable/ic_menu_my_calendar"
+                             />
                     </LinearLayout>
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:maxLength="9"
+                        android:imeOptions="actionNext"
                         android:inputType="number"
-                        android:ems="10"
                         android:id="@+id/edit_tefl_emp"
-                        android:hint="telefono"/>
+                        android:hint="Teléfono"/>
 
                 <TextView
-                    android:padding="@dimen/fab_10dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ubicación de la sede principal"/>
@@ -122,28 +151,39 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:inputType="text"
                         android:id="@+id/edit_dpto"
-                        android:hint="departamento"/>
+                        android:imeOptions="actionNext"
+                        android:hint="Departamento"/>
                     <EditText
+                        android:textAlignment="center"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_prov"
-                        android:hint="provincia"/>
+                        android:hint="Provincia"/>
                     <EditText
+                        android:textAlignment="center"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_distrt"
-                        android:hint="direccion exacta"/>
+                        android:hint="Dirección exacta"/>
 
                 <Button
                     android:layout_width="match_parent"
                     android:id="@+id/btn_cuenta_emp"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@android:color/white"
                     android:layout_height="wrap_content"
                     android:text="Crear Cuenta"/>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="30dp"/>
 
         </LinearLayout>
     </ScrollView>

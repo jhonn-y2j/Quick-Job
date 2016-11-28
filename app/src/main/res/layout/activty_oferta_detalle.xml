@@ -131,12 +131,15 @@
             <Button
                 android:id="@+id/btn_postular"
                 android:text="@string/hint_postular"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="30dp"/>
 
         </LinearLayout>
 

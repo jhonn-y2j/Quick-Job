@@ -79,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra(MainActivity.ID, id);
             startActivity(intent);
         } else {
-            db.obtenerEmpresa();
-            db.obtenerOferta();
+            //db.obtenerEmpresa();
+            //db.obtenerOferta();
             Toast.makeText(getApplicationContext(), " Usuario no registrado ", Toast.LENGTH_SHORT).show();
         }
     }

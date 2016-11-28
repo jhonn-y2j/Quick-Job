@@ -23,7 +23,7 @@
                 android:layout_width="180dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/graduation" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -103,6 +103,7 @@
                 <RadioButton
                     android:text="Postulante"
                     android:checked="true"
+                    android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:id="@+id/radio_postulante"
                     android:layout_width="wrap_content"
@@ -111,6 +112,7 @@
                 <RadioButton
                     android:textColor="@android:color/white"
                     android:text="Empresa"
+                    android:textStyle="bold"
                     android:checked="false"
                     android:id="@+id/radio_empresa"
                     android:layout_width="wrap_content"
@@ -119,13 +121,6 @@
             </RadioGroup>
 
         </LinearLayout>
-
-        <ImageButton
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@mipmap/ic_launcher" />
 
     </LinearLayout>
 

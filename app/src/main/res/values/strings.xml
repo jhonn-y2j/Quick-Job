@@ -30,10 +30,10 @@
     <string name="hint_fechainicio">Fecha de Inicio</string>
     <string name="hint_sueldo">Sueldo</string>
     <string name="hint_ubicacion">Ubicación del trabajo</string>
-    <string name="hint_requisitos">Requisitos</string>
-    <string name="hint_funciones">Funciones y Obligaciones</string>
+    <string name="hint_requisitos">Requisitos:</string>
+    <string name="hint_funciones">Funciones y Obligaciones:</string>
     <string name="hint_perfil_est">Perfil</string>
-    <string name="hint_ramas">Ramas</string>
+    <string name="hint_ramas">Ramas:</string>
     <string name="hint_publicar">Publicar</string>
     <string name="hint_sexo">Género</string>
     <string name="title_publicaciones">OFERTAS DE EMPLEO PUBLICADAS POR SU EMPRESA</string>
@@ -41,18 +41,18 @@
     <string name="etiq_nombemp">Empresa</string>
     <string name="hint_postular">Postular</string>
     <string-array name="list_disponb">
-        <item>Full Time</item>
-        <item>Part Time</item>
+        <item> Full Time </item>
+        <item> Part Time </item>
     </string-array>
 
     <string-array name="list_perfil">
-        <item>Estudiante</item>
-        <item>Recién egresado</item>
+        <item> Estudiante </item>
+        <item> Recién egresado </item>
     </string-array>
 
     <string-array name="list_genero">
-        <item>Masculino</item>
-        <item>Femenino</item>
+        <item> Masculino </item>
+        <item> Femenino </item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
