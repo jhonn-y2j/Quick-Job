@@ -317,6 +317,6 @@ public class RegistersUsrsActivity extends AppCompatActivity implements DatePick
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        date_nac.setText(i + "-" + i1 + "-" + i2);
+        date_nac.setText(i + "-" + (i1+1) + "-" + i2);
     }
 }

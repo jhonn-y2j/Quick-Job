@@ -212,7 +212,7 @@ public class RegistersEmpActivity extends AppCompatActivity implements DatePicke
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        anho.setText("" + i + "-" + i1 + "-" + i2);
+        anho.setText("" + i + "-" + (i1+1) + "-" + i2);
     }
 
     @OnClick(R.id.show_date)
