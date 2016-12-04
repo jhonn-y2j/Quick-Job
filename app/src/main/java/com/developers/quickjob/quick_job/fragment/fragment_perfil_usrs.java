@@ -1,30 +1,44 @@
 package com.developers.quickjob.quick_job.fragment;
 
-import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.developers.quickjob.quick_job.R;
-import com.developers.quickjob.quick_job.modelo.Postulante;
 import com.developers.quickjob.quick_job.restapi.VolleySingleton;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jhonn_aj on 24/11/2016.
@@ -59,9 +73,11 @@ public class fragment_perfil_usrs extends Fragment {
     @BindView(R.id.text_exp)
     EditText experiencia;
 
-    public static final String ID="id";
+    public static final String ID = "id";
     int idusers;
     Operacionesbd db;
+    @BindView(R.id.notificar)
+    ImageButton notificar;
 
     @Nullable
     @Override
@@ -69,14 +85,14 @@ public class fragment_perfil_usrs extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_perfil_user, container, false);
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         //db=Operacionesbd.getInstancia(getActivity());
 
-        idusers=getArguments().getInt(ID);
+        idusers = getArguments().getInt(ID);
 
-        String url="http://unmsmquickjob.pe.hu/quickjob/perfil_postulante.php?id="+idusers;
-        JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+        String url = "http://unmsmquickjob.pe.hu/quickjob/perfil_postulante.php?id=" + idusers;
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 procesarRespuesta(response);
@@ -108,7 +124,7 @@ public class fragment_perfil_usrs extends Fragment {
             experiencia.setText(postulante.getEmpresa_exp()+ " / " + postulante.getEmpresa_cargo());
         }*/
 
-        Log.d(fragment_perfil_usrs.class.getName(),"holo "+ idusers );
+        Log.d(fragment_perfil_usrs.class.getName(), "holo " + idusers);
 
         return view;
     }
@@ -120,9 +136,9 @@ public class fragment_perfil_usrs extends Fragment {
             switch (mensaje) {
                 case "1":
                     // Obtener objeto "meta"
-                    JSONArray jsonArray=response.getJSONArray("postulante");
-                    JSONObject jsonObject=jsonArray.getJSONObject(0);
-                    nomb_apell.setText(jsonObject.getString("noms_postulante")+jsonObject.getString("apells_postulante"));
+                    JSONArray jsonArray = response.getJSONArray("postulante");
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    nomb_apell.setText(jsonObject.getString("noms_postulante") + jsonObject.getString("apells_postulante"));
                     estudio.setText(jsonObject.getString("centro_estud_postulante"));
                     carrera.setText(jsonObject.getString("carrera_postulante"));
                     fecha_nac.setText(jsonObject.getString("fecha_nac_postulante"));
@@ -134,7 +150,7 @@ public class fragment_perfil_usrs extends Fragment {
                     buscar.setText(jsonObject.getString("tipo_busq_postulante"));
                     sit_acad.setText(jsonObject.getString("cond_academ_postulante"));
                     cond_acd.setText(jsonObject.getString("carrera_postulante"));
-                    experiencia.setText(jsonObject.getString("empresa_postulante")+" - "+jsonObject.getString("cargo_postulante"));
+                    experiencia.setText(jsonObject.getString("empresa_postulante") + " - " + jsonObject.getString("cargo_postulante"));
                     break;
 
                 case "2":
@@ -161,4 +177,116 @@ public class fragment_perfil_usrs extends Fragment {
 
     }
 
+    @OnClick(R.id.notificar)
+    public void onClick() {
+        /*NotificationCompat.Builder builder= new NotificationCompat.Builder(getActivity());
+        builder.setSmallIcon(R.drawable.icon_group);
+        builder.setAutoCancel(true);
+        builder.setVibrate(new long[] {100, 250, 100, 500});
+        builder.setContentTitle("Notificacion basica");
+        builder.setContentText("jakfjaklfjjgd");
+        builder.setSubText("aljfkgj");
+
+        NotificationManager mNotifyMgr =(NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(1,builder.build());*/
+
+        /*final String SENDER_ID="190560486126";
+        FirebaseMessaging fm = FirebaseMessaging.getInstance();
+        AtomicInteger msgId = new AtomicInteger();
+        fm.send(new RemoteMessage.Builder(SENDER_ID + "@gcm.googleapis.com")
+                .setMessageId(Integer.toString(msgId.incrementAndGet()))
+                .addData("my_message", "Hello World")
+                .addData("my_action","SAY_HELLO")
+                .build());*/
+
+       /* SharedPreferences sharedPreferences=getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        final String token=sharedPreferences.getString("token","");
+        String app_server_url="http://unmsm.pe.hu/quick/insert_fcm.php";
+
+        Log.d(fragment_perfil_usrs.class.getName(),token);
+
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, app_server_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(fragment_perfil_usrs.class.getName(), "Error Volley: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String , String> params= new HashMap<String,String>();
+                params.put("fcm_token",token);
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(getActivity()).addRequestQueue(stringRequest);*/
+
+        /*HashMap<String,String> map = new HashMap<>();
+
+        map.put("fcm_token",token);
+
+        JSONObject jsonObject= new JSONObject(map);
+
+        VolleySingleton.getInstance(getActivity()).addRequestQueue(
+                new JsonObjectRequest(Request.Method.POST, app_server_url, jsonObject,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                //procesarRespuesta(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d(fragment_perfil_usrs.class.getName(), "Error Volley: " + error.getMessage());
+                    }
+                }){
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String ,String> headers= new HashMap<String, String>();
+                        headers.put("Content-Type","application/json; charset=utf-8");
+                        headers.put("Accept","application/json");
+                        return headers;
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8" + getParamsEncoding();
+                    }
+                });*/
+
+        // notificar para un usuario especifico
+
+       /* String app_server_url="http://unmsmquickjob.pe.hu/quickjob/send_notification.php";
+
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, app_server_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(fragment_perfil_usrs.class.getName(), "Error Volley: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String , String> params= new HashMap<String,String>();
+                params.put("message","Android Developer :)");
+                params.put("title","Oferta Laboral");
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(getActivity()).addRequestQueue(stringRequest);*/
+
+
+    }
 }

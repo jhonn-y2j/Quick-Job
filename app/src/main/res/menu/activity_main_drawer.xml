@@ -4,23 +4,23 @@
     <group android:checkableBehavior="single"  >
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/account_card_details"
             android:title="@string/nav_text_perfil" />
         <item
             android:id="@+id/nav_ofertas"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ver_ofertas"
             android:title="@string/nav_text_oferta" />
         <item
             android:id="@+id/nav_postulaciones"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/publicaciones"
             android:title="@string/nav_text_postulaciones" />
         <item
             android:id="@+id/nav_notification"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/notificaciones"
             android:title="@string/nav_text_notificacion" />
         <item
             android:id="@+id/nav_close"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/exit_to_app"
             android:title="@string/nav_text_salir" />
     </group>
 

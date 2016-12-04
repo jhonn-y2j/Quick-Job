@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
+import com.developers.quickjob.quick_job.fragment_emp.fragment_notif_emp;
 import com.developers.quickjob.quick_job.fragment_emp.fragment_oferta;
 import com.developers.quickjob.quick_job.fragment_emp.fragment_perfil_empresa;
 import com.developers.quickjob.quick_job.fragment_emp.fragmetn_ofertas_publicadas;
@@ -101,6 +102,8 @@ public class MainActivityEmp extends AppCompatActivity
             fragment = new fragmetn_ofertas_publicadas();
         }else if (id==R.id.nav_close_emp){
             this.finish();
+        }else if (id==R.id.nav_notification_emp){
+            fragment=new fragment_notif_emp();
         }
 
         if (fragment!=null){

@@ -1,6 +1,8 @@
 package com.developers.quickjob.quick_job;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -202,6 +204,10 @@ public class OfertaDetalleActivity extends AppCompatActivity {
     public  void postularOferta(Postulaciones postulaciones){
         String url="http://unmsmquickjob.pe.hu/quickjob/postular_oferta.php";
 
+        //obtenemos el token
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        final String token=sharedPreferences.getString("token","");
+
         final String p=String.valueOf(postulaciones.getIdpostulante());
         final String o=String.valueOf(postulaciones.getIdoferta());
         final String np=String.valueOf(postulaciones.getPostular());
@@ -215,6 +221,7 @@ public class OfertaDetalleActivity extends AppCompatActivity {
         map.put("np",np);
         map.put("ne",ne);
         map.put("num",num);
+        map.put("t",token);
 
         JSONObject jsonObject= new JSONObject(map);
 

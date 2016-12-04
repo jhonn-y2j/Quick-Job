@@ -22,9 +22,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.developers.quickjob.quick_job.LoginActivity;
 import com.developers.quickjob.quick_job.R;
 import com.developers.quickjob.quick_job.RegistersEmpActivity;
+import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
 import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.modelo.Oferta;
 import com.developers.quickjob.quick_job.restapi.VolleySingleton;
@@ -133,7 +135,37 @@ public class fragment_oferta extends Fragment implements AdapterView.OnItemSelec
             Toast.makeText(getActivity(), "Completar datos", Toast.LENGTH_SHORT).show();
         }*/
 
+        publicarNotificacion(oferta.getPuesto());
 
+
+
+    }
+
+    public void publicarNotificacion(final String puesto){
+        String app_server_url="http://unmsmquickjob.pe.hu/quickjob/send_notification.php";
+
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, app_server_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(fragment_perfil_usrs.class.getName(), "Error Volley: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String , String> params= new HashMap<String,String>();
+                params.put("message",puesto);
+                params.put("title","Nueva Oferta Laboral");
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(getActivity()).addRequestQueue(stringRequest);
     }
 
     public void registrarOferta(Oferta oferta){

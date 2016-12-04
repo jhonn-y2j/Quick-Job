@@ -71,6 +71,8 @@
 
                 <ImageButton
                     android:layout_gravity="top"
+                    android:id="@+id/notificar"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_menu_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.developers.quickjob.quick_job.fragment.fragment_notf_usrs;
 import com.developers.quickjob.quick_job.fragment.fragment_ofertas_empleo;
 import com.developers.quickjob.quick_job.fragment.fragment_perfil_usrs;
 import com.developers.quickjob.quick_job.fragment.fragment_postulaciones;
@@ -100,7 +101,6 @@ public class MainActivity extends AppCompatActivity
         if (id==R.id.nav_perfil){
             toolbar.setTitle("Perfil");
             fragment= new fragment_perfil_usrs();
-
         }else if (id==R.id.nav_ofertas){
             toolbar.setTitle("Ofertas Empleo");
             fragment= new fragment_ofertas_empleo();
@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity
             fragment= new fragment_postulaciones();
         }else if (id==R.id.nav_close){
             this.finish();
+        }else if (id==R.id.nav_notification){
+            fragment=new fragment_notf_usrs();
+            toolbar.setTitle(" ");
         }
 
         if (fragment!=null){
