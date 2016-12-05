@@ -67,6 +67,8 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
     EditText experiencia;
 
     String tokenUsers;
+    String puesto;
+    String empresa;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,7 +118,8 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
         if(id==R.id.action_notificacion){
             actualizarEstadoPostulante(idpostulante,idoferts);
             enviar_notificacion();
-            Toast.makeText(getApplicationContext()," postulante - > " + idpostulante + " / oferts -> " + idoferts + " token " + tokenUsers,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext()," postulante - > " + idpostulante + " / oferts -> " + idoferts + " token " + tokenUsers,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Respuesta enviada" + tokenUsers,Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -200,9 +203,9 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String , String> params= new HashMap<String,String>();
-                params.put("message","Android Developer :)");
+                params.put("message",puesto);
                 params.put("token",tokenUsers);
-                params.put("title","Postulación Procesada");
+                params.put("title","Postulante Finalista a " + empresa );
 
                 return params;
             }
@@ -234,6 +237,8 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
                     condicion.setText(jsonObject.getString("carrera_postulante"));
                     experiencia.setText(jsonObject.getString("empresa_postulante") + " - " + jsonObject.getString("cargo_postulante"));
                     tokenUsers=jsonObject.getString("tokenusers");
+                    puesto=jsonObject.getString("oferta_puesto");
+                    empresa=jsonObject.getString("empresa_nom_comercial");
                     break;
 
                 case "2":
