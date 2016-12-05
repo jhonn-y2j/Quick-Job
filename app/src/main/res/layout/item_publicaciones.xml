@@ -35,11 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_margin="2dp"
-                android:layout_height="1dp"/>
+
 
             <TextView
                 android:textAlignment="center"
@@ -49,11 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_margin="2dp"
-                android:layout_height="1dp"/>
+
 
         </LinearLayout>
 
@@ -73,10 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
-            <View
-                android:layout_width="2dp"
-                android:background="@color/colorPrimary"
-                android:layout_height="20dp"/>
+            
 
             <TextView
                 android:textAlignment="center"

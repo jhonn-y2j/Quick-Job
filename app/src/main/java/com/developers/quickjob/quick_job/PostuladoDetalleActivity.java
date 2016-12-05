@@ -119,7 +119,7 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
             actualizarEstadoPostulante(idpostulante,idoferts);
             enviar_notificacion();
             //Toast.makeText(getApplicationContext()," postulante - > " + idpostulante + " / oferts -> " + idoferts + " token " + tokenUsers,Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"Respuesta enviada" + tokenUsers,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Respuesta enviada",Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
