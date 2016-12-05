@@ -1,5 +1,6 @@
 package com.developers.quickjob.quick_job;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -73,7 +74,6 @@ public class PostuladosActivity extends AppCompatActivity implements AdapterPubl
 
         VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonObjectRequest);
 
-
     }
 
     private void procesarRespuesta(JSONObject response) {
@@ -127,6 +127,9 @@ public class PostuladosActivity extends AppCompatActivity implements AdapterPubl
 
     @Override
     public void itemClick(Oferta app) {
-        
+        Intent intent= new Intent(getApplicationContext(), PostuladoDetalleActivity.class);
+        intent.putExtra(PostuladoDetalleActivity.ID,Integer.parseInt(app.getId()));
+        intent.putExtra(PostuladoDetalleActivity.ID_OFERT,idoferta);
+        startActivity(intent);
     }
 }

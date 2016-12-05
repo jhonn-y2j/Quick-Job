@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/img_backgroud_app"
+    android:layout_height="match_parent">
+
+    <ScrollView android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/fab_margin"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_weight="1"
+                    android:src="@drawable/avatar"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/text_nomb_ape"
+                        android:hint="Nombres y Apellidos"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_estudio"
+                        android:hint="¿Dónde estudias?"
+                        android:enabled="false"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_carrera"
+                        android:hint="¿Qué estudias?"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:padding="@dimen/fab_margin"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Datos Personales"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!-- Datos Personales-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Fecha de Nacimiento:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_fecha_nac"
+                        android:layout_weight="1"
+                        android:text="12/08/1994"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Género:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_genero"
+                        android:layout_weight="1"
+                        android:text="Masculino"
+                        android:enabled="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Dirección:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_direccion"
+                        android:layout_weight="1"
+                        android:text="Av. Colonial #34"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Teléfono:"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_telef"
+                        android:layout_weight="1"
+                        android:text="999734789"
+                        android:enabled="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:text="Datos Acádemicos"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="¿Dónde estudié?"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_centroestudio"
+                        android:layout_weight="1"
+                        android:text="UNI"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="¿Qué estudié?"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_profesion"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:text="Ing. Ambiental"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="¿Que busco?"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_buscar"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:layout_weight="1"
+                        android:text="Practicas pre profesional"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Situación:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_sit_acacd"
+                        android:layout_weight="1"
+                        android:text="Estudiante"
+                        android:enabled="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Perteneciente al:"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_cond_acad"
+                        android:layout_weight="1"
+                        android:text="Tercio"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Experiencia Laboral:"
+                        android:layout_width="0dp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/text_exp"
+                        android:layout_weight="1"
+                        android:text="Telefonica"
+                        android:maxLines="3"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textColorHint="@android:color/white"
+                        android:enabled="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
