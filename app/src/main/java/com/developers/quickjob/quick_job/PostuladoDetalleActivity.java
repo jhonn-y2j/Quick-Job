@@ -1,5 +1,6 @@
 package com.developers.quickjob.quick_job;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -113,11 +114,73 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
         int id=item.getItemId();
 
         if(id==R.id.action_notificacion){
+            actualizarEstadoPostulante(idpostulante,idoferts);
             enviar_notificacion();
             Toast.makeText(getApplicationContext()," postulante - > " + idpostulante + " / oferts -> " + idoferts + " token " + tokenUsers,Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void actualizarEstadoPostulante(int idpostulante,int idoferts){
+        String url="http://unmsmquickjob.pe.hu/quickjob/actualizaraprobacionpostulacion.php";
+
+        final String postulante=""+idpostulante;
+        final String oferta=""+idoferts;
+
+
+        HashMap<String,String> map = new HashMap<>();
+
+        map.put("idpostulante",postulante);
+        map.put("idoferta",oferta);
+
+        JSONObject jsonObject= new JSONObject(map);
+
+        VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(
+                new JsonObjectRequest(Request.Method.POST, url, jsonObject,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                procesarActualizacion(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d(RegistersEmpActivity.class.getName(), "Error Volley: " + error.getMessage());
+                    }
+                }){
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String ,String> headers= new HashMap<String, String>();
+                        headers.put("Content-Type","application/json; charset=utf-8");
+                        headers.put("Accept","application/json");
+                        return headers;
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8" + getParamsEncoding();
+                    }
+                });
+
+
+    }
+
+    private void procesarActualizacion(JSONObject response){
+        try {
+            String estado = response.getString("estado");
+            String mensaje = response.getString("mensaje");
+            switch (estado) {
+                case "1":
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                    break;
+                case "2":
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                    break;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void enviar_notificacion(){
@@ -139,7 +202,7 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
                 Map<String , String> params= new HashMap<String,String>();
                 params.put("message","Android Developer :)");
                 params.put("token",tokenUsers);
-                params.put("title","Oferta Laboral");
+                params.put("title","Postulación Procesada");
 
                 return params;
             }

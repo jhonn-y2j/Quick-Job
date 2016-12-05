@@ -36,8 +36,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         builder.setAutoCancel(true);
         builder.setVibrate(new long[] {100, 250, 100, 500});
         if (remoteMessage.getNotification()==null){
-        builder.setContentText(remoteMessage.getData().get("message"));
-        builder.setContentTitle(remoteMessage.getData().get("title"));
+            builder.setContentText(remoteMessage.getData().get("message"));
+            builder.setContentTitle(remoteMessage.getData().get("title"));
         }else {
             builder.setContentTitle(remoteMessage.getNotification().getTitle());
             builder.setContentText(remoteMessage.getNotification().getBody());
