@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.developers.quickjob.quick_job.Dialog.DateDialog;
+import com.developers.quickjob.quick_job.dialog.DateDialog;
 import com.developers.quickjob.quick_job.modelo.Empresa;
 import com.developers.quickjob.quick_job.restapi.VolleySingleton;
 import com.developers.quickjob.quick_job.sqlite.Operacionesbd;

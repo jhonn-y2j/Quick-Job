@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
@@ -33,6 +34,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this);
         builder.setSmallIcon(R.drawable.publicar_oferta);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.imagen_logo));
         builder.setAutoCancel(true);
         builder.setVibrate(new long[] {100, 250, 100, 500});
         if (remoteMessage.getNotification()==null){

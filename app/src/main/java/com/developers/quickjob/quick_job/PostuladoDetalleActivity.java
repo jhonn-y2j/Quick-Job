@@ -203,9 +203,9 @@ public class PostuladoDetalleActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String , String> params= new HashMap<String,String>();
-                params.put("message",puesto);
+                params.put("message","Entrevista para " + puesto);
                 params.put("token",tokenUsers);
-                params.put("title","Postulante Finalista a " + empresa );
+                params.put("title",empresa );
 
                 return params;
             }

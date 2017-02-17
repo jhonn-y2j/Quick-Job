@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorEscudo">#F5B502</color>
+    <color name="colorEscudo2">#F8C842</color>
+
+    <integer-array name="colorProgress">
+        <item >@color/colorEscudo</item>
+        <item>@color/colorEscudo2</item>
+    </integer-array>
 </resources>

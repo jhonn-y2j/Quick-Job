@@ -1,4 +1,4 @@
-package com.developers.quickjob.quick_job.Dialog;
+package com.developers.quickjob.quick_job.dialog;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

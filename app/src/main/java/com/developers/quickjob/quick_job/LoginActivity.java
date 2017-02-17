@@ -1,11 +1,11 @@
 package com.developers.quickjob.quick_job;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,21 +15,18 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.developers.quickjob.quick_job.restapi.VolleySingleton;
-import com.developers.quickjob.quick_job.sqlite.ConsultarNube;
-import com.developers.quickjob.quick_job.sqlite.Operacionesbd;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import fr.castorflex.android.circularprogressbar.CircularProgressBar;
+import fr.castorflex.android.circularprogressbar.CircularProgressDrawable;
 
 /**
  * Created by jhonn_aj on 24/11/2016.
@@ -53,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
 
     final String[] id = new String[1];
 
+    @BindView(R.id.circularProgress)
+    CircularProgressBar circularProgress;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_registrar)
     public void handleRegistrar() {
-        if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante) {
+        if (groupIniciar.getCheckedRadioButtonId() == R.id.radio_postulante) {
             startActivity(new Intent(getApplicationContext(), RegistersUsrsActivity.class));
-        }else{
+        } else {
             startActivity(new Intent(getApplicationContext(), RegistersEmpActivity.class));
         }
     }
@@ -85,9 +85,11 @@ public class LoginActivity extends AppCompatActivity {
         String email = correo.getText().toString();
         String pass = password.getText().toString();
         //Intent intent;
-        if (groupIniciar.getCheckedRadioButtonId()==R.id.radio_postulante){
-            String url="http://unmsmquickjob.pe.hu/quickjob/verificar_postulante.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
-            JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+        circularProgress.setVisibility(View.VISIBLE);
+        ((CircularProgressDrawable) circularProgress.getIndeterminateDrawable()).start();
+        if (groupIniciar.getCheckedRadioButtonId() == R.id.radio_postulante) {
+            String url = "http://unmsmquickjob.pe.hu/quickjob/verificar_postulante.php?email=" + correo.getText().toString() + "&pass=" + password.getText().toString();
+            JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     procesarRespuestaPostulante(response);
@@ -101,9 +103,9 @@ public class LoginActivity extends AppCompatActivity {
             VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonArrayRequest);
             //id[0] = db.verficarusrs(email, pass);
             //intent = new Intent(getApplicationContext(), MainActivity.class);
-        }else{
-            String url="http://unmsmquickjob.pe.hu/quickjob/verificar_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString();
-            JsonObjectRequest jsonArrayRequest= new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
+        } else {
+            String url = "http://unmsmquickjob.pe.hu/quickjob/verificar_empresa.php?email=" + correo.getText().toString() + "&pass=" + password.getText().toString();
+            JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     procesarRespuesta(response);
@@ -116,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             });
 
             VolleySingleton.getInstance(getApplicationContext()).addRequestQueue(jsonArrayRequest);
-           // new consultarDatos().execute("http://unmsmquickjob.pe.hu/quickjob/consulta_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString());
+            // new consultarDatos().execute("http://unmsmquickjob.pe.hu/quickjob/consulta_empresa.php?email="+correo.getText().toString()+"&pass="+password.getText().toString());
             /*id = db.verficaremprs(email, pass);
             intent = new Intent(getApplicationContext(), MainActivityEmp.class);*/
         }
@@ -129,6 +131,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), " Usuario no registrado ", Toast.LENGTH_SHORT).show();
         }*/
 
+
+
     }
 
     private void procesarRespuesta(JSONObject response) {
@@ -138,10 +142,10 @@ public class LoginActivity extends AppCompatActivity {
             switch (mensaje) {
                 case "1":
                     // Obtener objeto "meta"
-                    JSONArray jsonArray=response.getJSONArray("empresa");
-                    JSONObject jsonObject=jsonArray.getJSONObject(0);
-                    id[0]=jsonObject.getString("empresa_id");
-                    Log.d(LoginActivity.class.getName(),id[0]);
+                    JSONArray jsonArray = response.getJSONArray("empresa");
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    id[0] = jsonObject.getString("empresa_id");
+                    Log.d(LoginActivity.class.getName(), id[0]);
                     Intent intent = new Intent(getApplicationContext(), MainActivityEmp.class);
                     intent.putExtra(MainActivity.ID, id[0]);
                     startActivity(intent);
@@ -164,6 +168,8 @@ public class LoginActivity extends AppCompatActivity {
                     break;
             }
 
+            circularProgress.setVisibility(View.GONE);
+            ((CircularProgressDrawable) circularProgress.getIndeterminateDrawable()).stop();
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -178,10 +184,10 @@ public class LoginActivity extends AppCompatActivity {
             switch (mensaje) {
                 case "1":
                     // Obtener objeto "meta"
-                    JSONArray jsonArray=response.getJSONArray("postulante");
-                    JSONObject jsonObject=jsonArray.getJSONObject(0);
-                    id[0]=jsonObject.getString("id_postulante");
-                    Log.d(LoginActivity.class.getName(),id[0]);
+                    JSONArray jsonArray = response.getJSONArray("postulante");
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    id[0] = jsonObject.getString("id_postulante");
+                    Log.d(LoginActivity.class.getName(), id[0]);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra(MainActivity.ID, id[0]);
                     startActivity(intent);
@@ -204,6 +210,8 @@ public class LoginActivity extends AppCompatActivity {
                     break;
             }
 
+            circularProgress.setVisibility(View.GONE);
+            ((CircularProgressDrawable) circularProgress.getIndeterminateDrawable()).stop();
 
         } catch (JSONException e) {
             e.printStackTrace();
